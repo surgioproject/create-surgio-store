@@ -1,0 +1,1 @@
+{{ toBase64(getShadowsocksNodes(nodes, provider)) }}
