@@ -6,7 +6,7 @@
     "create-surgio-store": "./index.js"
   },
   "scripts": {
-    "test": "test:lint && test:unit",
+    "test": "yarn test:lint && yarn test:unit",
     "test:lint": "eslint .",
     "test:unit": "ava"
   },
