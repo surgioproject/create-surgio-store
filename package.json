@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/geekdada/create-surgio-store#readme",
   "devDependencies": {
+    "ava": "^2.3.0",
+    "coffee": "^5.2.2",
     "eslint": "^6.2.1"
   },
   "engines": {
@@ -34,5 +36,15 @@
     "fs-extra": "^8.1.0",
     "handlebars": "^4.1.2",
     "inquirer": "^6.5.1"
+  },
+  "ava": {
+    "failFast": true,
+    "compileEnhancements": false,
+    "files": [
+      "test/**/*.test.js"
+    ],
+    "sources": [
+      "test/**/*.js"
+    ]
   }
 }

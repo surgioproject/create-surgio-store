@@ -77,14 +77,14 @@ async function createFn(name, verbose, useCnpm) {
     },
   };
   const allDependencies = ['surgio'];
-  const useAliyunOss = await inquirer.prompt(
+  const useAliyunOss = process.stdout.isTTY ? await inquirer.prompt(
     {
       type: 'confirm',
       name: 'useAliyunOss',
       message: '是否配置将配置文件上传至阿里云 OSS？（默认：是）',
       default: true,
     }
-  );
+  ) : true;
 
   if (useAliyunOss) {
     packageJson.scripts.update = 'surgio generate && surgio upload';
@@ -100,6 +100,7 @@ async function createFn(name, verbose, useCnpm) {
       path.join(root, '.npmrc'),
       `registry=https://registry.npm.taobao.org` + os.EOL
     );
+    // eslint-disable-next-line require-atomic-updates
     process.env.FSEVENTS_BINARY_HOST_MIRROR = 'https://npm.taobao.org/mirrors/fsevents';
   }
 
