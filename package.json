@@ -5,6 +5,12 @@
   "bin": {
     "create-surgio-store": "./index.js"
   },
+  "files": [
+    "template",
+    "createSurgioStore.js",
+    "index.js",
+    "README.md"
+  ],
   "scripts": {
     "test": "yarn test:lint && yarn test:unit",
     "test:lint": "eslint .",
@@ -25,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/geekdada/create-surgio-store/issues"
   },
-  "homepage": "https://github.com/geekdada/create-surgio-store#readme",
+  "homepage": "https://surgio.royli.dev",
   "devDependencies": {
     "ava": "^2.3.0",
     "coffee": "^5.2.2",
