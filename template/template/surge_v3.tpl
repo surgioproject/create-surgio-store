@@ -47,16 +47,16 @@ allow-wifi-access = true
 hide-crashlytics-request = true
 
 [Proxy]
-{{ getSurgeNodes(nodes) }}
+{{ getSurgeNodes(nodeList) }}
 
 [Proxy Group]
-🚀 Proxy = select, {{ getNodeNames(names, ['shadowsocks']) }}
-🎬 Netflix = select, {{ getNodeNames(names, ['shadowsocks'], netflixFilter) }}
+🚀 Proxy = select, {{ getNodeNames(nodeList, ['shadowsocks']) }}
+🎬 Netflix = select, {{ getNodeNames(nodeList, ['shadowsocks'], netflixFilter) }}
 📺 YouTube = select, 🚀 Proxy, US, HK
 🍎 Apple = select, DIRECT, 🚀 Proxy, US, HK
 🍎 Apple CDN = select, DIRECT, 🍎 Apple
-US = url-test, {{ getNodeNames(names, ['shadowsocks'], usFilter) }}, url = http://www.gstatic.com/generate_204, interval = 1200
-HK = url-test, {{ getNodeNames(names, ['shadowsocks'], hkFilter) }}, url = http://www.gstatic.com/generate_204, interval = 1200
+US = url-test, {{ getNodeNames(nodeList, ['shadowsocks'], usFilter) }}, url = http://www.gstatic.com/generate_204, interval = 1200
+HK = url-test, {{ getNodeNames(nodeList, ['shadowsocks'], hkFilter) }}, url = http://www.gstatic.com/generate_204, interval = 1200
 
 [Rule]
 {{ apple_rules.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') }}

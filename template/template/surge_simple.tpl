@@ -46,13 +46,13 @@ allow-wifi-access = true
 hide-crashlytics-request = true
 
 [Proxy]
-{{ getSurgeNodes(nodes) }}
+{{ getSurgeNodes(nodeList) }}
 
 [Proxy Group]
-Proxy = select, {{ getNodeNames(names, ['shadowsocks']) }}
+Proxy = select, {{ getNodeNames(nodeList, ['shadowsocks']) }}
 Apple = select, DIRECT, Proxy, US, HK
-US = url-test, {{ getNodeNames(names, ['shadowsocks'], usFilter) }}, url = http://www.gstatic.com/generate_204, interval = 1200
-HK = url-test, {{ getNodeNames(names, ['shadowsocks'], hkFilter) }}, url = http://www.gstatic.com/generate_204, interval = 1200
+US = url-test, {{ getNodeNames(nodeList, ['shadowsocks'], usFilter) }}, url = http://www.gstatic.com/generate_204, interval = 1200
+HK = url-test, {{ getNodeNames(nodeList, ['shadowsocks'], hkFilter) }}, url = http://www.gstatic.com/generate_204, interval = 1200
 
 [Rule]
 {{ apple_rules.main('Proxy', 'Apple', 'DIRECT', 'DIRECT', 'US') }}
