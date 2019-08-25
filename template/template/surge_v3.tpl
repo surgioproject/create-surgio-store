@@ -1,6 +1,5 @@
 #!MANAGED-CONFIG {{ downloadUrl }} interval=43200 strict=false
 
-{% import './snippet/proxy_rules.tpl' as proxy_rules %}
 {% import './snippet/direct_rules.tpl' as direct_rules %}
 {% import './snippet/apple_rules.tpl' as apple_rules %}
 {% import './snippet/netflix_rules.tpl' as netflix_rules %}
@@ -73,8 +72,6 @@ HK = url-test, {{ getNodeNames(names, ['shadowsocks'], hkFilter) }}, url = http:
 {{ alibaba_rules.main('DIRECT') }}
 
 {{ blocked_rules.main('🚀 Proxy') }}
-
-{{ proxy_rules.main('🚀 Proxy') }}
 
 {{ direct_rules.main('DIRECT') }}
 

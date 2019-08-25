@@ -17,4 +17,10 @@
 [download-image]: https://img.shields.io/npm/dm/create-surgio-store.svg?style=flat-square
 [download-url]: https://npmjs.org/package/create-surgio-store
 
-Surgio store starter kit.
+## 文档
+
+查看完整使用文档，前往 [surgio.royli.dev](https://surgio.royli.dev)。
+
+## 什么是 Surgio？
+
+- [geekdada/surgio](https://github.com/geekdada/surgio)

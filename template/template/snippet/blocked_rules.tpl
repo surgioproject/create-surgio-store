@@ -1,4 +1,13 @@
 {% macro main(rule) %}
+# 可能被屏蔽
+DOMAIN-KEYWORD,evernote,{{ rule }}
+
+# Bloombeg
+USER-AGENT,Bloomberg*,{{ rule }}
+
+# Taiwan
+DOMAIN-SUFFIX,tw,{{ rule }}
+
 DOMAIN-KEYWORD,bitly,{{ rule }}
 DOMAIN-KEYWORD,blogspot,{{ rule }}
 DOMAIN-KEYWORD,dropbox,{{ rule }}

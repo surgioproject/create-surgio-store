@@ -1,6 +1,5 @@
 # {{ downloadUrl }}
 
-{% import './snippet/proxy_rules.tpl' as proxy_rules %}
 {% import './snippet/direct_rules.tpl' as direct_rules %}
 {% import './snippet/apple_rules.tpl' as apple_rules %}
 {% import './snippet/netflix_rules.tpl' as netflix_rules %}
@@ -24,7 +23,6 @@ Rule:
 {{ us_rules.main('US') | patchYamlArray }}
 {{ telegram_rules.main('🚀 Proxy') | patchYamlArray }}
 {{ blocked_rules.main('🚀 Proxy') | patchYamlArray }}
-{{ proxy_rules.main('🚀 Proxy') | patchYamlArray }}
 {{ direct_rules.main('DIRECT') | patchYamlArray }}
 
 # LAN

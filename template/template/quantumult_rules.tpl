@@ -1,4 +1,4 @@
-{% import './snippet/proxy_rules.tpl' as proxy_rules %}
+{% import './snippet/blocked_rules.tpl' as blocked_rules %}
 {% import './snippet/direct_rules.tpl' as direct_rules %}
 {% import './snippet/apple_rules.tpl' as apple_rules %}
 {% import './snippet/hbo_rules.tpl' as hbo_rules %}
@@ -25,7 +25,7 @@
 
 {{ alibaba_rules.main('DIRECT') }}
 
-{{ proxy_rules.main('PROXY') }}
+{{ blocked_rules.main('PROXY') }}
 
 {{ direct_rules.main('DIRECT') }}
 
