@@ -168,10 +168,19 @@ async function createFn(name, verbose, useCnpm) {
   console.log(`  ${chalk.cyan('npm run update')}`);
   console.log(`    更新所有配置文件，上传至阿里云 OSS（如果已开启该功能）`);
   console.log();
+  console.log(`  ${chalk.cyan('npx surgio generate')}`);
+  console.log(`    生成新的配置文件`);
+  console.log();
+  console.log(`  ${chalk.cyan('npx surgio upload')}`);
+  console.log(`    上传所有配置文件`);
+  console.log();
   console.log('目录中已包含一些用于演示的配置，快去试试吧！');
   console.log();
   console.log(`  ${chalk.cyan('cd')} ${appName}`);
   console.log(`  ${chalk.cyan('npm run update')}`);
+  console.log();
+  console.log(`使用文档：${chalk.green('https://surgio.royli.dev/')}`);
+  console.log();
 }
 
 function isSafeToCreateProjectIn(root, name) {
