@@ -4,6 +4,11 @@
  * 使用文档：https://surgio.royli.dev/
  */
 module.exports = {
+  /**
+   * 远程片段
+   * 文档：https://surgio.royli.dev/guide/custom-config.html#remotesnippets
+   */
+  remoteSnippets: [],
   artifacts: [
     /**
      * Surge
@@ -82,14 +87,23 @@ module.exports = {
       provider: 'subscribe_demo',
     },
   ],
-  urlBase: 'https://example.com/', // 订阅地址的前缀部分，以 / 结尾
+  /**
+   * 订阅地址的前缀部分，以 / 结尾
+   * 例如阿里云 OSS 的访问地址 https://xxx.oss-cn-hangzhou.aliyuncs.com/
+   */
+  urlBase: 'https://example.com/',
   {{#if useAliyunOss}}
   upload: {
-    prefix: '', // 默认保存至根目录，可以在此修改子目录名，以 / 结尾
+    // 默认保存至根目录，可以在此修改子目录名，以 / 结尾
+    prefix: '',
     bucket: '',
     region: '',
     accessKeyId: '',
     accessKeySecret: '',
   },
+  {{/if}}
+  {{#if allowAnalytics}}
+  // 非常有限的报错信息收集
+  analytics: true,
   {{/if}}
 };

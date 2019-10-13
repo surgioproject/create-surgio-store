@@ -49,10 +49,10 @@ hide-crashlytics-request = true
 {{ getSurgeNodes(nodeList) }}
 
 [Proxy Group]
-Proxy = select, {{ getNodeNames(nodeList, ['shadowsocks']) }}
+Proxy = select, {{ getNodeNames(nodeList) }}
 Apple = select, DIRECT, Proxy, US, HK
-US = url-test, {{ getNodeNames(nodeList, ['shadowsocks'], usFilter) }}, url = http://www.gstatic.com/generate_204, interval = 1200
-HK = url-test, {{ getNodeNames(nodeList, ['shadowsocks'], hkFilter) }}, url = http://www.gstatic.com/generate_204, interval = 1200
+US = url-test, {{ getNodeNames(nodeList, undefined, usFilter) }}, url = http://www.qualcomm.cn/generate_204, interval = 1200
+HK = url-test, {{ getNodeNames(nodeList, undefined, hkFilter) }}, url = http://www.qualcomm.cn/generate_204, interval = 1200
 
 [Rule]
 {{ apple_rules.main('Proxy', 'Apple', 'DIRECT', 'DIRECT', 'US') }}

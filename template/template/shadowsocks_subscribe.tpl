@@ -1,1 +1,1 @@
-{{ getShadowsocksNodes(nodeList, provider) | base64 }}
+{{ getQuantumultNodes(nodeList, provider) | base64 }}

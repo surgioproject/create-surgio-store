@@ -16,7 +16,8 @@ DOMAIN-SUFFIX,booking.cn,{{ rule }}
 
 # Misc
 PROCESS-NAME,百度网盘,{{ rule }}
-DOMAIN,ip.bjango.com,{{ rule }} // iStat Menu IP Test
+# iStat Menu IP Test
+DOMAIN,ip.bjango.com,{{ rule }}
 DOMAIN-SUFFIX,biquge.com.tw,{{ rule }}
 DOMAIN-SUFFIX,maoyun.tv,{{ rule }}
 DOMAIN-SUFFIX,moke.com,{{ rule }}

@@ -35,8 +35,8 @@ http-listen = 0.0.0.0:6152
 socks5-listen = 0.0.0.0:6153
 
 # 测速地址
-internet-test-url = http://www.gstatic.com/generate_204
-proxy-test-url = http://www.gstatic.com/generate_204
+internet-test-url = http://www.qualcomm.cn/generate_204
+proxy-test-url = http://www.qualcomm.cn/generate_204
 
 # 其它
 # external-controller-access = password@0.0.0.0:6170
@@ -50,13 +50,13 @@ hide-crashlytics-request = true
 {{ getSurgeNodes(nodeList) }}
 
 [Proxy Group]
-🚀 Proxy = select, {{ getNodeNames(nodeList, ['shadowsocks']) }}
-🎬 Netflix = select, {{ getNodeNames(nodeList, ['shadowsocks'], netflixFilter) }}
+🚀 Proxy = select, {{ getNodeNames(nodeList) }}
+🎬 Netflix = select, {{ getNodeNames(nodeList, undefined, netflixFilter) }}
 📺 YouTube = select, 🚀 Proxy, US, HK
 🍎 Apple = select, DIRECT, 🚀 Proxy, US, HK
 🍎 Apple CDN = select, DIRECT, 🍎 Apple
-US = url-test, {{ getNodeNames(nodeList, ['shadowsocks'], usFilter) }}, url = http://www.gstatic.com/generate_204, interval = 1200
-HK = url-test, {{ getNodeNames(nodeList, ['shadowsocks'], hkFilter) }}, url = http://www.gstatic.com/generate_204, interval = 1200
+US = url-test, {{ getNodeNames(nodeList, undefined, usFilter) }}, url = http://www.qualcomm.cn/generate_204, interval = 1200
+HK = url-test, {{ getNodeNames(nodeList, undefined, hkFilter) }}, url = http://www.qualcomm.cn/generate_204, interval = 1200
 
 [Rule]
 {{ apple_rules.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') }}

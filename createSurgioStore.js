@@ -85,9 +85,20 @@ async function createFn(name, verbose, useCnpm) {
       default: true,
     }
   ) : true;
+  const allowAnalytics = process.stdout.isTTY ? await inquirer.prompt(
+    {
+      type: 'confirm',
+      name: 'allowAnalytics',
+      message: '是否允许我收集非常有限的报错信息用于排查问题？（默认：是）',
+      default: true,
+    }
+  ) : true;
 
   if (useAliyunOss) {
     packageJson.scripts.update = 'surgio generate && surgio upload';
+  }
+  if (allowAnalytics) {
+    console.log('若对信息收集感到不适，可以稍后在 surgio.conf.js 中关闭。');
   }
 
   fs.writeFileSync(
@@ -157,7 +168,7 @@ async function createFn(name, verbose, useCnpm) {
       process.exit(1);
     });
 
-  renderTemplates(root, useAliyunOss);
+  renderTemplates(root, useAliyunOss, allowAnalytics);
 
   copyFolders(root);
 
@@ -179,7 +190,8 @@ async function createFn(name, verbose, useCnpm) {
   console.log(`  ${chalk.cyan('cd')} ${appName}`);
   console.log(`  ${chalk.cyan('npm run update')}`);
   console.log();
-  console.log(`使用文档：${chalk.green('https://surgio.royli.dev/')}`);
+  console.log(`使用文档: ${chalk.green('https://surgio.royli.dev/')}`);
+  console.log(`交流群: ${chalk.green('https://t.me/surgiotg')}`);
   console.log();
 }
 
@@ -332,12 +344,13 @@ function install(root, dependencies, verbose) {
     });
   });
 }
-function renderTemplates(root, useAliyunOss) {
+function renderTemplates(root, useAliyunOss, allowAnalytics) {
   const confTpl = Handlebars.compile(fs.readFileSync(path.join(__dirname, 'template/surgio.conf.js.hbs'), {
     encoding: 'utf8',
   }));
   const confContent = confTpl({
     useAliyunOss,
+    allowAnalytics,
   });
   const confTargetPath = path.join(root, 'surgio.conf.js');
 
