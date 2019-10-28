@@ -23,6 +23,13 @@ module.exports = {
       template: 'surge_simple',
       provider: 'subscribe_demo',
     },
+    // 合并 Provider
+    {
+      name: 'SurgeV3_combine.conf',
+      template: 'surge_v3',
+      provider: 'demo',
+      combineProviders: ['subscribe_demo'],
+    },
 
     /**
      * Clash
@@ -31,7 +38,6 @@ module.exports = {
       name: 'Clash.yml',
       template: 'clash',
       provider: 'subscribe_demo',
-      // Clash 配置才需要定义这个方法，文档待补充
       proxyGroupModifier(nodeList, filters) {
         return [
           {
@@ -95,7 +101,7 @@ module.exports = {
   {{#if useAliyunOss}}
   upload: {
     // 默认保存至根目录，可以在此修改子目录名，以 / 结尾
-    prefix: '',
+    prefix: '/',
     bucket: '',
     region: '',
     accessKeyId: '',
