@@ -1,3 +1,13 @@
+## [1.0.6](https://github.com/geekdada/create-surgio-store/compare/v1.0.5...v1.0.6) (2019-10-28)
+
+
+### Features
+
+* add new demo features ([785a8b6](https://github.com/geekdada/create-surgio-store/commit/785a8b6))
+* support new surgio ([8449df7](https://github.com/geekdada/create-surgio-store/commit/8449df7))
+
+
+
 ## [1.0.5](https://github.com/geekdada/create-surgio-store/compare/v1.0.4...v1.0.5) (2019-10-13)
 
 
