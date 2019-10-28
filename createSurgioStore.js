@@ -39,7 +39,7 @@ if (typeof projectName === 'undefined') {
   console.log(`  ${chalk.cyan(program.name())} ${chalk.green('my-surge-rules')}`);
   console.log();
   console.log(
-    `运行 ${chalk.cyan(`${program.name()} --help`)} 查看详细指引。`
+    `运行 ${chalk.cyan(`${program.name()} --help`)} 查看详细指引`
   );
   process.exit(1);
 }
@@ -98,7 +98,7 @@ async function createFn(name, verbose, useCnpm) {
     packageJson.scripts.update = 'surgio generate && surgio upload';
   }
   if (allowAnalytics) {
-    console.log('若对信息收集感到不适，可以稍后在 surgio.conf.js 中关闭。');
+    console.log('若对信息收集感到不适，可以稍后在 surgio.conf.js 中关闭');
   }
 
   fs.writeFileSync(
@@ -121,17 +121,17 @@ async function createFn(name, verbose, useCnpm) {
     process.exit(1);
   }
 
-  console.log('正在安装依赖，可能需要一点时间。安装过程中请不要关闭。');
+  console.log('正在安装依赖，可能需要一点时间。安装过程中请不要关闭');
 
   await install(root, allDependencies, verbose, useCnpm)
     .catch(reason => {
       console.log();
-      console.log('终止安装。');
+      console.log('终止安装');
       if (reason.command) {
-        console.log(`  ${chalk.cyan(reason.command)} 命令运行失败。`);
+        console.log(`  ${chalk.cyan(reason.command)} 命令运行失败`);
       } else {
         console.log(
-          chalk.red('发生未知错误。')
+          chalk.red('发生未知错误')
         );
         console.log(reason);
       }
@@ -164,7 +164,7 @@ async function createFn(name, verbose, useCnpm) {
         process.chdir(path.resolve(root, '..'));
         fs.removeSync(path.join(root));
       }
-      console.log('已完成。');
+      console.log('已完成');
       process.exit(1);
     });
 
@@ -359,9 +359,9 @@ function renderTemplates(root, useAliyunOss, allowAnalytics) {
     confContent + os.EOL
   );
 
-  console.log(`配置已生成至 ${chalk.green(confTargetPath)}，请将配置补全。`);
+  console.log(`配置已生成至 ${chalk.green(confTargetPath)}，请将配置补全`);
   if (useAliyunOss) {
-    console.log('阿里云 OSS 配置可以在管理面板中找到。');
+    console.log('阿里云 OSS 配置可以在管理面板中找到');
   }
   console.log();
 }

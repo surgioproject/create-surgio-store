@@ -29,6 +29,7 @@ test('will work', async t => {
     cwd: testStore,
   })
     .expect('code', 0)
+    .debug()
     .end();
 
   t.pass();

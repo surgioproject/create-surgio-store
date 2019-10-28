@@ -100,12 +100,14 @@ module.exports = {
   urlBase: 'https://example.com/',
   {{#if useAliyunOss}}
   upload: {
-    // 默认保存至根目录，可以在此修改子目录名，以 / 结尾
+    // 默认保存至根目录，可以在此修改子目录名，以 / 结尾，默认为 /
     prefix: '/',
-    bucket: '',
-    region: '',
-    accessKeyId: '',
-    accessKeySecret: '',
+    bucket: 'surgio-store',
+    // 支持所有区域
+    region: 'oss-cn-hangzhou',
+    // 以下信息于阿里云控制台获得
+    accessKeyId: 'YOUR_ACCESS_KEY_ID',
+    accessKeySecret: 'YOUR_ACCESS_KEY_SECRET',
   },
   {{/if}}
   {{#if allowAnalytics}}
