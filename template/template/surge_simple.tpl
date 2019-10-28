@@ -51,8 +51,8 @@ hide-crashlytics-request = true
 [Proxy Group]
 Proxy = select, {{ getNodeNames(nodeList) }}
 Apple = select, DIRECT, Proxy, US, HK
-US = url-test, {{ getNodeNames(nodeList, undefined, usFilter) }}, url = http://www.qualcomm.cn/generate_204, interval = 1200
-HK = url-test, {{ getNodeNames(nodeList, undefined, hkFilter) }}, url = http://www.qualcomm.cn/generate_204, interval = 1200
+US = url-test, {{ getNodeNames(nodeList, usFilter) }}, url = http://www.qualcomm.cn/generate_204, interval = 1200
+HK = url-test, {{ getNodeNames(nodeList, hkFilter) }}, url = http://www.qualcomm.cn/generate_204, interval = 1200
 
 [Rule]
 {{ apple_rules.main('Proxy', 'Apple', 'DIRECT', 'DIRECT', 'US') }}
