@@ -16,7 +16,7 @@ test.after.always('cleanup', async () => {
 });
 
 test('will work', async t => {
-  await coffee.fork(bin, [ 'test-store' ], {
+  await coffee.fork(bin, ['test-store'], {
     cwd: fixtures,
   })
     .waitForPrompt()
@@ -25,7 +25,7 @@ test('will work', async t => {
     .expect('code', 0)
     .end();
 
-  await coffee.fork(path.join(testStore, 'node_modules/.bin/surgio'), [ 'generate' ], {
+  await coffee.spawn('npx', ['surgio', 'generate'], {
     cwd: testStore,
   })
     .expect('code', 0)
