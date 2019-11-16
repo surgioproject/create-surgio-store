@@ -47,7 +47,7 @@
     "commander": "^3.0.0",
     "cross-spawn": "^6.0.5",
     "fs-extra": "^8.1.0",
-    "handlebars": "^4.3.0",
+    "handlebars": "^4.5.2",
     "inquirer": "^6.5.1"
   },
   "ava": {
