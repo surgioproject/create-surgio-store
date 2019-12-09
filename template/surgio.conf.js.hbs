@@ -1,5 +1,7 @@
 'use strict';
 
+const { utils } = require('surgio');
+
 /**
  * 使用文档：https://surgio.royli.dev/
  */
@@ -8,7 +10,31 @@ module.exports = {
    * 远程片段
    * 文档：https://surgio.royli.dev/guide/custom-config.html#remotesnippets
    */
-  remoteSnippets: [],
+  remoteSnippets: [
+    {
+      name: 'telegram', // 模板中对应 remoteSnippets.telegram
+      url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Telegram.list'
+    },
+    {
+      name: 'netflix', // 模板中对应 remoteSnippets.netflix
+      url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Media/Netflix.list'
+    },
+    {
+      name: 'hbo', // 模板中对应 remoteSnippets.hbo
+      url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Media/HBO.list'
+    },
+    {
+      name: 'hulu', // 模板中对应 remoteSnippets.hulu
+      url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Media/Hulu.list'
+    },
+    {
+      name: 'paypal', // 模板中对应 remoteSnippets.paypal
+      url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/PayPal.list',
+    },
+  ],
+  customFilters: {
+    hktFilter: utils.useKeywords(['hkt', 'HKT']),
+  },
   artifacts: [
     /**
      * Surge
@@ -35,7 +61,7 @@ module.exports = {
      * Clash
      */
     {
-      name: 'Clash.yml',
+      name: 'Clash.yaml',
       template: 'clash',
       provider: 'subscribe_demo',
       proxyGroupModifier(nodeList, filters) {
@@ -91,6 +117,36 @@ module.exports = {
       name: 'Shadowsocks_subscribe.conf',
       template: 'shadowsocks_subscribe',
       provider: 'subscribe_demo',
+    },
+
+    /**
+     * Quantumult X
+     */
+    {
+      name: 'QuantumultX_rules.conf',
+      template: 'quantumultx_rules',
+      provider: 'demo',
+    },
+    {
+      name: 'QuantumultX.conf',
+      template: 'quantumultx',
+      provider: 'demo',
+    },
+    {
+      name: 'QuantumultX_subscribe_us.conf',
+      template: 'quantumultx_subscribe',
+      provider: 'demo',
+      customParams: {
+        magicVariable: utils.usFilter,
+      },
+    },
+    {
+      name: 'QuantumultX_subscribe_hk.conf',
+      template: 'quantumultx_subscribe',
+      provider: 'demo',
+      customParams: {
+        magicVariable: utils.hkFilter,
+      },
     },
   ],
   /**

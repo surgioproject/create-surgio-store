@@ -1,4 +1,16 @@
 {% macro main(rule) %}
+# Alibaba
+DOMAIN-KEYWORD,alibaba-inc,{{ rule }}
+DOMAIN-KEYWORD,alibaba,{{ rule }}
+DOMAIN-KEYWORD,alipay-inc,{{ rule }}
+DOMAIN-KEYWORD,aliyuncs,{{ rule }}
+DOMAIN-KEYWORD,alipay,{{ rule }}
+DOMAIN-KEYWORD,taobao,{{ rule }}
+DOMAIN-KEYWORD,alicdn,{{ rule }}
+DOMAIN-KEYWORD,aliyun,{{ rule }}
+DOMAIN-KEYWORD,9game,{{ rule }}
+DOMAIN-KEYWORD,ucweb,{{ rule }}
+
 # Battle.net
 DOMAIN-SUFFIX,blizzard.com,{{ rule }}
 DOMAIN-SUFFIX,battle.net,{{ rule }}
@@ -8,14 +20,28 @@ PROCESS-NAME,*Folx*,{{ rule }}
 PROCESS-NAME,*Thunder*,{{ rule }}
 PROCESS-NAME,*DownloadService*,{{ rule }}
 PROCESS-NAME,*Soda*,{{ rule }}
+PROCESS-NAME,*p4pclient*,{{ rule }}
+PROCESS-NAME,aria2c,{{ rule }}
+PROCESS-NAME,fdm,{{ rule }}
+PROCESS-NAME,Folx,{{ rule }}
+PROCESS-NAME,NetTransport,{{ rule }}
+PROCESS-NAME,Transmission,{{ rule }}
+PROCESS-NAME,uTorrent,{{ rule }}
+PROCESS-NAME,WebTorrent,{{ rule }}
+PROCESS-NAME,WebTorrent Helper,{{ rule }}
 DOMAIN-KEYWORD,tracker,{{ rule }}
 
 # Booking
-DOMAIN-SUFFIX,booking.com,{{ rule}}
+DOMAIN-SUFFIX,booking.com,{{ rule }}
 DOMAIN-SUFFIX,booking.cn,{{ rule }}
 
 # Misc
 PROCESS-NAME,百度网盘,{{ rule }}
+PROCESS-NAME,*Clash*,{{ rule }}
+PROCESS-NAME,*clash*,{{ rule }}
+PROCESS-NAME,v2ray,{{ rule }}
+PROCESS-NAME,ss-local,{{ rule }}
+PROCESS-NAME,ssr-local,{{ rule }}
 # iStat Menu IP Test
 DOMAIN,ip.bjango.com,{{ rule }}
 DOMAIN-SUFFIX,biquge.com.tw,{{ rule }}

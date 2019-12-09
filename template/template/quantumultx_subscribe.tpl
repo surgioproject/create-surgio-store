@@ -1,0 +1,1 @@
+{{ getQuantumultXNodes(nodeList, customParams.magicVariable) }}

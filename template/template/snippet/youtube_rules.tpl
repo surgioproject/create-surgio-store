@@ -8,7 +8,7 @@ DOMAIN-SUFFIX,youtu.be,{{ rule }}
 USER-AGENT,*YouTube*,{{ rule }}
 USER-AGENT,com.google.ios.youtube*,{{ rule }}
 
-# Youtube Music is only avaliable to US citizens
+# Youtube Music
 USER-AGENT,YouTubeMusic*,{{ rule }}
 USER-AGENT,com.google.ios.youtubemusic*,{{ rule }}
 DOMAIN-SUFFIX,music.youtube.com,{{ rule }}

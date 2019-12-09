@@ -10,7 +10,7 @@
 [SERVER]
 
 [SOURCE]
-TEEHEE(左滑选择更新), server, {{ getDownloadUrl('Shadowsocks_subscribe.conf') }}, false, true, false, TEEHEE
+Surgio(左滑选择更新), server, {{ getDownloadUrl('Shadowsocks_subscribe.conf') }}, false, true, false, Surgio
 分流规则(左滑选择替换), filter, {{ getDownloadUrl('Quantumult_rules.conf') }}, true
 屏蔽规则(左滑选择替换), blacklist, https://cdn.rixcloud.io/Quantumult/Rules/Reject.conf, false
 

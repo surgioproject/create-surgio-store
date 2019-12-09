@@ -318,7 +318,7 @@ function install(root, dependencies, verbose) {
   return new Promise((resolve, reject) => {
     let command;
     let args;
-    
+
     command = 'npm';
       args = [
         'install',
@@ -348,18 +348,28 @@ function renderTemplates(root, useAliyunOss, allowAnalytics) {
   const confTpl = Handlebars.compile(fs.readFileSync(path.join(__dirname, 'template/surgio.conf.js.hbs'), {
     encoding: 'utf8',
   }));
-  const confContent = confTpl({
-    useAliyunOss,
-    allowAnalytics,
-  });
-  const confTargetPath = path.join(root, 'surgio.conf.js');
+  const gitignoreTpl = Handlebars.compile(fs.readFileSync(path.join(__dirname, 'template/gitignore.hbs'), {
+    encoding: 'utf8',
+  }));
+
+  const paths = {
+    conf: path.join(root, 'surgio.conf.js'),
+    gitignore: path.join(root, '.gitignore'),
+  };
 
   fs.writeFileSync(
-    confTargetPath,
-    confContent + os.EOL
+    paths.conf,
+    confTpl({
+      useAliyunOss,
+      allowAnalytics,
+    }) + os.EOL,
+  );
+  fs.writeFileSync(
+    paths.gitignore,
+    gitignoreTpl({}) + os.EOL,
   );
 
-  console.log(`配置已生成至 ${chalk.green(confTargetPath)}，请将配置补全`);
+  console.log(`配置已生成至 ${chalk.green(paths.conf)}，请将配置补全`);
   if (useAliyunOss) {
     console.log('阿里云 OSS 配置可以在管理面板中找到');
   }

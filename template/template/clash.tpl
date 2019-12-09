@@ -2,11 +2,8 @@
 
 {% import './snippet/direct_rules.tpl' as direct_rules %}
 {% import './snippet/apple_rules.tpl' as apple_rules %}
-{% import './snippet/netflix_rules.tpl' as netflix_rules %}
 {% import './snippet/youtube_rules.tpl' as youtube_rules %}
 {% import './snippet/us_rules.tpl' as us_rules %}
-{% import './snippet/telegram_rules.tpl' as telegram_rules %}
-{% import './snippet/alibaba_rules.tpl' as alibaba_rules %}
 {% import './snippet/blocked_rules.tpl' as blocked_rules %}
 
 external-controller: 127.0.0.1:7892
@@ -16,14 +13,15 @@ socks-port: 7891
 {{ clashProxyConfig | yaml }}
 
 Rule:
-{{ alibaba_rules.main('DIRECT') | patchYamlArray }}
-{{ apple_rules.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') | patchYamlArray }}
-{{ netflix_rules.main('🎬 Netflix') | patchYamlArray }}
-{{ youtube_rules.main('🚀 Proxy') | patchYamlArray }}
-{{ us_rules.main('US') | patchYamlArray }}
-{{ telegram_rules.main('🚀 Proxy') | patchYamlArray }}
-{{ blocked_rules.main('🚀 Proxy') | patchYamlArray }}
-{{ direct_rules.main('DIRECT') | patchYamlArray }}
+{{ apple_rules.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') | clash }}
+{{ remoteSnippets.netflix.main('🎬 Netflix') | clash }}
+{{ remoteSnippets.hbo.main('🚀 Proxy') | clash }}
+{{ remoteSnippets.hulu.main('🚀 Proxy') | clash }}
+{{ youtube_rules.main('🚀 Proxy') | clash }}
+{{ us_rules.main('US') | clash }}
+{{ remoteSnippets.telegram.main('🚀 Proxy') | clash }}
+{{ blocked_rules.main('🚀 Proxy') | clash }}
+{{ direct_rules.main('DIRECT') | clash }}
 
 # LAN
 - DOMAIN-SUFFIX,local,DIRECT

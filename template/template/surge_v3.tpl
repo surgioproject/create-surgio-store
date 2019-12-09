@@ -2,11 +2,8 @@
 
 {% import './snippet/direct_rules.tpl' as direct_rules %}
 {% import './snippet/apple_rules.tpl' as apple_rules %}
-{% import './snippet/netflix_rules.tpl' as netflix_rules %}
 {% import './snippet/youtube_rules.tpl' as youtube_rules %}
 {% import './snippet/us_rules.tpl' as us_rules %}
-{% import './snippet/telegram_rules.tpl' as telegram_rules %}
-{% import './snippet/alibaba_rules.tpl' as alibaba_rules %}
 {% import './snippet/blocked_rules.tpl' as blocked_rules %}
 
 [General]
@@ -35,8 +32,8 @@ http-listen = 0.0.0.0:6152
 socks5-listen = 0.0.0.0:6153
 
 # 测速地址
-internet-test-url = http://www.qualcomm.cn/generate_204
-proxy-test-url = http://www.qualcomm.cn/generate_204
+internet-test-url = {{ proxyTestUrl }}
+proxy-test-url = {{ proxyTestUrl }}
 
 # 其它
 # external-controller-access = password@0.0.0.0:6170
@@ -55,21 +52,23 @@ hide-crashlytics-request = true
 📺 YouTube = select, 🚀 Proxy, US, HK
 🍎 Apple = select, DIRECT, 🚀 Proxy, US, HK
 🍎 Apple CDN = select, DIRECT, 🍎 Apple
-US = url-test, {{ getNodeNames(nodeList, usFilter) }}, url = http://www.qualcomm.cn/generate_204, interval = 1200
-HK = url-test, {{ getNodeNames(nodeList, hkFilter) }}, url = http://www.qualcomm.cn/generate_204, interval = 1200
+US = url-test, {{ getNodeNames(nodeList, usFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
+HK = url-test, {{ getNodeNames(nodeList, hkFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
 
 [Rule]
 {{ apple_rules.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') }}
 
-{{ netflix_rules.main('🎬 Netflix') }}
+{{ remoteSnippets.netflix.main('🎬 Netflix') }}
+
+{{ remoteSnippets.hbo.main('🎬 Netflix') }}
+
+{{ remoteSnippets.hulu.main('🚀 Proxy') }}
 
 {{ youtube_rules.main('📺 YouTube') }}
 
 {{ us_rules.main('US') }}
 
-{{ telegram_rules.main('🚀 Proxy') }}
-
-{{ alibaba_rules.main('DIRECT') }}
+{{ remoteSnippets.telegram.main('🚀 Proxy') }}
 
 {{ blocked_rules.main('🚀 Proxy') }}
 

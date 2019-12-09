@@ -1,21 +1,17 @@
 {% import './snippet/blocked_rules.tpl' as blocked_rules %}
 {% import './snippet/direct_rules.tpl' as direct_rules %}
 {% import './snippet/apple_rules.tpl' as apple_rules %}
-{% import './snippet/hbo_rules.tpl' as hbo_rules %}
-{% import './snippet/netflix_rules.tpl' as netflix_rules %}
-{% import './snippet/hulu_rules.tpl' as hulu_rules %}
 {% import './snippet/nowe_rules.tpl' as nowe_rules %}
 {% import './snippet/youtube_rules.tpl' as youtube_rules %}
 {% import './snippet/us_rules.tpl' as us_rules %}
-{% import './snippet/alibaba_rules.tpl' as alibaba_rules %}
 
 {{ apple_rules.main('PROXY', '选择Apple接口策略，不懂就不选', '选择Apple资源策略，不懂就选DIRECT', 'DIRECT', 'PROXY') }}
 
-{{ hbo_rules.main('选择HBO的策略，不懂就不选') }}
+{{ remoteSnippets.hbo.main('选择HBO的策略，不懂就不选') }}
 
-{{ netflix_rules.main('选择Netflix策略，不懂就不选') }}
+{{ remoteSnippets.netflix.main('选择Netflix策略，不懂就不选') }}
 
-{{ hulu_rules.main('选择Hulu的策略，不懂就不选') }}
+{{ remoteSnippets.hulu.main('选择Hulu的策略，不懂就不选') }}
 
 {{ nowe_rules.main('选择TVB&Viu&NOWe的策略，不懂就不选') }}
 
@@ -23,7 +19,7 @@
 
 {{ us_rules.main('选择YouTube的策略，不懂就不选') }}
 
-{{ alibaba_rules.main('DIRECT') }}
+{{ remoteSnippets.telegram.main('PROXY') }}
 
 {{ blocked_rules.main('PROXY') }}
 

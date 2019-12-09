@@ -2,11 +2,8 @@
 
 {% import './snippet/direct_rules.tpl' as direct_rules %}
 {% import './snippet/apple_rules.tpl' as apple_rules %}
-{% import './snippet/netflix_rules.tpl' as netflix_rules %}
 {% import './snippet/youtube_rules.tpl' as youtube_rules %}
 {% import './snippet/us_rules.tpl' as us_rules %}
-{% import './snippet/telegram_rules.tpl' as telegram_rules %}
-{% import './snippet/alibaba_rules.tpl' as alibaba_rules %}
 {% import './snippet/blocked_rules.tpl' as blocked_rules %}
 
 [General]
@@ -51,21 +48,23 @@ hide-crashlytics-request = true
 [Proxy Group]
 Proxy = select, {{ getNodeNames(nodeList) }}
 Apple = select, DIRECT, Proxy, US, HK
-US = url-test, {{ getNodeNames(nodeList, usFilter) }}, url = http://www.qualcomm.cn/generate_204, interval = 1200
-HK = url-test, {{ getNodeNames(nodeList, hkFilter) }}, url = http://www.qualcomm.cn/generate_204, interval = 1200
+US = url-test, {{ getNodeNames(nodeList, usFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
+HK = url-test, {{ getNodeNames(nodeList, hkFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
 
 [Rule]
 {{ apple_rules.main('Proxy', 'Apple', 'DIRECT', 'DIRECT', 'US') }}
 
-{{ netflix_rules.main('Proxy') }}
+{{ remoteSnippets.netflix.main('Proxy') }}
+
+{{ remoteSnippets.hbo.main('Proxy') }}
+
+{{ remoteSnippets.hulu.main('Proxy') }}
 
 {{ youtube_rules.main('Proxy') }}
 
 {{ us_rules.main('US') }}
 
-{{ telegram_rules.main('Proxy') }}
-
-{{ alibaba_rules.main('DIRECT') }}
+{{ remoteSnippets.telegram.main('Proxy') }}
 
 {{ blocked_rules.main('Proxy') }}
 
