@@ -1,3 +1,12 @@
+## [1.0.8](https://github.com/geekdada/create-surgio-store/compare/v1.0.7...v1.0.8) (2019-12-09)
+
+
+### Features
+
+* update template ([6970489](https://github.com/geekdada/create-surgio-store/commit/6970489a6d8d1e26f09ab0fb14bf60db465a69eb))
+
+
+
 ## [1.0.7](https://github.com/geekdada/create-surgio-store/compare/v1.0.6...v1.0.7) (2019-12-05)
 
 
