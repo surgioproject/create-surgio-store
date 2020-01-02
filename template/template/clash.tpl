@@ -10,7 +10,37 @@ external-controller: 127.0.0.1:7892
 port: 7890
 socks-port: 7891
 
-{{ clashProxyConfig | yaml }}
+Proxy: {{ getClashNodes(nodeList) | json }}
+
+Proxy Group:
+- type: select
+  name: 🚀 Proxy
+  proxies: {{ getClashNodeNames(nodeList) | json }}
+- type: select
+  name: 🎬 Netflix
+  proxies: {{ getClashNodeNames(nodeList, netflixFilter) | json }}
+- type: url-test
+  name: US
+  proxies: {{ getClashNodeNames(nodeList, usFilter) | json }}
+  url: {{ proxyTestUrl }}
+  interval: 1200
+- type: url-test
+  name: HK
+  proxies: {{ getClashNodeNames(nodeList, hkFilter) | json }}
+  url: {{ proxyTestUrl }}
+  interval: 1200
+- type: select
+  name: 🍎 Apple
+  proxies:
+    - DIRECT
+    - 🚀 Proxy
+    - US
+    - HK
+- type: select
+  name: 🍎 Apple CDN
+  proxies:
+    - DIRECT
+    - 🍎 Apple
 
 Rule:
 {{ apple_rules.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') | clash }}
