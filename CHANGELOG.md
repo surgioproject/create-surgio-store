@@ -1,3 +1,12 @@
+## [1.0.9](https://github.com/geekdada/create-surgio-store/compare/v1.0.8...v1.0.9) (2020-01-02)
+
+
+### Features
+
+* update clash template ([92a822c](https://github.com/geekdada/create-surgio-store/commit/92a822cb932d9fc2d08070ebc1e9e4c78803998a))
+
+
+
 ## [1.0.8](https://github.com/geekdada/create-surgio-store/compare/v1.0.7...v1.0.8) (2019-12-09)
 
 
