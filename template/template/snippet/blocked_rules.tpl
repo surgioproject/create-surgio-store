@@ -20,6 +20,7 @@ DOMAIN-KEYWORD,twitter,{{ rule }}
 DOMAIN-KEYWORD,whatsapp,{{ rule }}
 DOMAIN-KEYWORD,youtube,{{ rule }}
 
+DOMAIN-SUFFIX,cdn.ampproject.org,{{ rule }}
 DOMAIN-SUFFIX,fb.com,{{ rule }}
 DOMAIN-SUFFIX,fb.me,{{ rule }}
 DOMAIN-SUFFIX,fbcdn.net,{{ rule }}
