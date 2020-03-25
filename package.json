@@ -33,11 +33,11 @@
   },
   "homepage": "https://surgio.royli.dev",
   "devDependencies": {
-    "ava": "^2.3.0",
+    "ava": "^3.5.1",
     "coffee": "^5.2.2",
     "conventional-changelog-cli": "^2.0.23",
     "eslint": "^6.2.1",
-    "np": "^5.0.3"
+    "np": "^6.2.0"
   },
   "engines": {
     "node": ">=10.0.0"
