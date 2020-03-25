@@ -9,7 +9,7 @@ const fixtures = path.join(__dirname, 'fixtures');
 const testStore = path.join(fixtures, 'test-store');
 const bin = require.resolve('../index.js');
 
-test.after.always('cleanup', async () => {
+test.before('cleanup', async () => {
   if (fs.existsSync(testStore)) {
     await fs.remove(testStore);
   }

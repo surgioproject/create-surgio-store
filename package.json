@@ -14,7 +14,7 @@
   "scripts": {
     "test": "yarn test:lint && yarn test:unit",
     "test:lint": "eslint .",
-    "test:unit": "ava",
+    "test:unit": "ava --timeout=10m",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "pub": "np",
     "version": "npm run changelog && git add ."
