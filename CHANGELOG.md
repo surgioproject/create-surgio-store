@@ -1,3 +1,13 @@
+## [1.0.11](https://github.com/geekdada/create-surgio-store/compare/v1.0.10...v1.0.11) (2020-03-25)
+
+
+### Features
+
+* add engine defination ([ba109c6](https://github.com/geekdada/create-surgio-store/commit/ba109c6b105366c570132da7f4dfba3c1880b95a))
+* update rule ([51b540d](https://github.com/geekdada/create-surgio-store/commit/51b540dde57c9cce0fa68ae25d70b74c07c60bd5))
+
+
+
 ## [1.0.10](https://github.com/geekdada/create-surgio-store/compare/v1.0.9...v1.0.10) (2020-02-15)
 
 
@@ -26,6 +36,7 @@
 ### Bug Fixes
 
 * package.json & yarn.lock to reduce vulnerabilities ([df60a66](https://github.com/geekdada/create-surgio-store/commit/df60a667136cb83175ec0fab0f28027819c521ce))
+* package.json to reduce vulnerabilities ([a2d09ff](https://github.com/geekdada/create-surgio-store/commit/a2d09ff068be256ae1621b3787003c859b866c07))
 
 
 
@@ -40,11 +51,6 @@
 
 
 ## [1.0.5](https://github.com/geekdada/create-surgio-store/compare/v1.0.4...v1.0.5) (2019-10-13)
-
-
-### Bug Fixes
-
-* package.json to reduce vulnerabilities ([a2d09ff](https://github.com/geekdada/create-surgio-store/commit/a2d09ff068be256ae1621b3787003c859b866c07))
 
 
 ### Features
