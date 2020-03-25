@@ -75,6 +75,9 @@ async function createFn(name, verbose, useCnpm) {
     scripts: {
       update: 'surgio generate',
     },
+    engines: {
+      "node": "^10"
+    }
   };
   const allDependencies = ['surgio'];
   const useAliyunOss = process.stdout.isTTY ? await inquirer.prompt(
