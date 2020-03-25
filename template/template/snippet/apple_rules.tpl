@@ -71,9 +71,9 @@ DOMAIN-SUFFIX,cdn-apple.com,{{ default_rule }}
 DOMAIN,cdn.apple-cloudkit.com,{{ default_rule }}
 # Developer
 DOMAIN,devimages-cdn.apple.com,{{ default_rule }}
-# Developer
 DOMAIN,devstreaming-cdn.apple.com,{{ default_rule }}
 DOMAIN,js-cdn.music.apple.com,{{ default_rule }}
+DOMAIN,docs-assets.developer.apple.com,{{ default_rule }}
 
 #
 # Apple News
