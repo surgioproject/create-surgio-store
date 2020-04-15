@@ -6,9 +6,11 @@
 {% import './snippet/us_rules.tpl' as us_rules %}
 {% import './snippet/blocked_rules.tpl' as blocked_rules %}
 
-external-controller: 127.0.0.1:7892
+external-controller: 127.0.0.1:9090
 port: 7890
 socks-port: 7891
+redir-port: 7892
+
 
 Proxy: {{ getClashNodes(nodeList) | json }}
 
