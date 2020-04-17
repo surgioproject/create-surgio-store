@@ -6,9 +6,23 @@
 {% import './snippet/us_rules.tpl' as us_rules %}
 {% import './snippet/blocked_rules.tpl' as blocked_rules %}
 
-external-controller: 127.0.0.1:7892
+external-controller: 127.0.0.1:9090
 port: 7890
 socks-port: 7891
+redir-port: 7892
+
+dns:
+  enable: true
+  nameserver:
+    - https://rubyfish.cn/dns-query
+  fallback:  # IP addresses who is outside CN in GEOIP will fallback here
+    - https://ea-dns.rubyfish.cn/dns-query
+    - https://1.0.0.1/dns-query
+    - https://dns.google/dns-query
+  fallback-filter:
+    geoip: true  # Enable GEOIP-based fallback
+    ipcidr:
+      - 240.0.0.0/4
 
 Proxy: {{ getClashNodes(nodeList) | json }}
 
