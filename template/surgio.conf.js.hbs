@@ -56,6 +56,12 @@ module.exports = {
       provider: 'demo',
       combineProviders: ['subscribe_demo'],
     },
+    // Surge + SSR
+    {
+      name: 'SurgeV3_ssr.conf',
+      template: 'surge_v3',
+      provider: 'ssr_subscribe_demo',
+    },
 
     /**
      * Clash
@@ -64,6 +70,14 @@ module.exports = {
       name: 'Clash.yaml',
       template: 'clash',
       provider: 'subscribe_demo',
+    },
+    {
+      name: 'Clash_custom_dns.yaml',
+      template: 'clash',
+      provider: 'subscribe_demo',
+      customParams: {
+        dns: true,
+      }
     },
 
     /**
@@ -121,6 +135,13 @@ module.exports = {
    * 例如阿里云 OSS 的访问地址 https://xxx.oss-cn-hangzhou.aliyuncs.com/
    */
   urlBase: 'https://example.com/',
+  surgeConfig: {
+    v2ray: 'native',
+  },
+  binPath: {
+    // 安装教程: https://surgio.royli.dev/guide/install-ssr-local.html
+    shadowsocksr: '/usr/local/bin/ssr-local',
+  },
   {{#if useAliyunOss}}
   upload: {
     // 默认保存至根目录，可以在此修改子目录名，以 / 结尾，默认为 /
