@@ -1,3 +1,12 @@
+## [2.0.1](https://github.com/geekdada/create-surgio-store/compare/v2.0.0...v2.0.1) (2020-07-14)
+
+
+### Bug Fixes
+
+* clash proxy-groups ([354a162](https://github.com/geekdada/create-surgio-store/commit/354a162d019f22f2eea116c4f9ba7b31a56d1418))
+
+
+
 # [2.0.0](https://github.com/geekdada/create-surgio-store/compare/v1.0.14...v2.0.0) (2020-07-14)
 
 
