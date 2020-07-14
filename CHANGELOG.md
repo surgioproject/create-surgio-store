@@ -1,3 +1,7 @@
+# [2.0.0](https://github.com/geekdada/create-surgio-store/compare/v1.0.14...v2.0.0) (2020-07-14)
+
+
+
 ## [1.0.14](https://github.com/geekdada/create-surgio-store/compare/v1.0.13...v1.0.14) (2020-04-30)
 
 
