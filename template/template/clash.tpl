@@ -25,9 +25,9 @@ dns:
       - 240.0.0.0/4
 {% endif %}
 
-Proxy: {{ getClashNodes(nodeList) | json }}
+proxies: {{ getClashNodes(nodeList) | json }}
 
-Proxy Group:
+proxy-group:
 - type: select
   name: 🚀 Proxy
   proxies: {{ getClashNodeNames(nodeList) | json }}

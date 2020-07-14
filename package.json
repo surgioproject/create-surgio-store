@@ -33,22 +33,22 @@
   },
   "homepage": "https://surgio.royli.dev",
   "devDependencies": {
-    "ava": "^3.8.1",
+    "ava": "^3.10.1",
     "coffee": "^5.4.0",
-    "conventional-changelog-cli": "^2.0.23",
-    "eslint": "^6.2.1",
-    "np": "^6.2.3"
+    "conventional-changelog-cli": "^2.0.34",
+    "eslint": "^7.4.0",
+    "np": "^6.3.2"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=12.0.0"
   },
   "dependencies": {
-    "chalk": "^4.0.0",
+    "chalk": "^4.1.0",
     "commander": "^5.1.0",
-    "cross-spawn": "^7.0.2",
-    "fs-extra": "^9.0.0",
+    "cross-spawn": "^7.0.3",
+    "fs-extra": "^9.0.1",
     "handlebars": "^4.7.6",
-    "inquirer": "^7.1.0"
+    "inquirer": "^7.3.2"
   },
   "ava": {
     "failFast": true,

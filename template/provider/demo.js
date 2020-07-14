@@ -12,7 +12,7 @@ module.exports = {
       password: 'password',
       obfs: 'tls',
       'obfs-host': 'gateway-carry.icloud.com',
-      'udp-relay': 'true',
+      'udp-relay': true,
     },
     {
       nodeName: '🇭🇰HK(Netflix)',
@@ -21,7 +21,7 @@ module.exports = {
       port: '10000',
       method: 'chacha20-ietf-poly1305',
       password: 'password',
-      'udp-relay': 'true',
+      'udp-relay': true,
     },
   ],
 };

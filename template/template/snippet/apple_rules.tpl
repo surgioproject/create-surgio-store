@@ -4,7 +4,9 @@
 # Apple 直连
 #
 USER-AGENT,*com.apple.mobileme.fmip1,DIRECT
+# Weather
 USER-AGENT,*WeatherFoundation*,DIRECT
+DOMAIN,weather-analytics-events.apple.com,DIRECT
 # Maps
 USER-AGENT,%E5%9C%B0%E5%9B%BE*,{{ location_rule }}
 # Settings
@@ -74,6 +76,7 @@ DOMAIN,devimages-cdn.apple.com,{{ default_rule }}
 DOMAIN,devstreaming-cdn.apple.com,{{ default_rule }}
 DOMAIN,js-cdn.music.apple.com,{{ default_rule }}
 DOMAIN,docs-assets.developer.apple.com,{{ default_rule }}
+DOMAIN-SUFFIX,apple-dns.net,{{ default_rule }}
 
 #
 # Apple News
@@ -129,6 +132,8 @@ DOMAIN-SUFFIX,aaplimg.com,{{ api_rule }}
 DOMAIN-SUFFIX,apple.co,{{ api_rule }}
 DOMAIN-SUFFIX,itunes.com,{{ api_rule }}
 DOMAIN-SUFFIX,itunes.apple.com,{{ api_rule }}
+DOMAIN-SUFFIX,apple,{{ api_rule }}
+DOMAIN,weather-analytics-events.apple.com,{{ api_rule }}
 # iCloud 上传和下载
 DOMAIN-SUFFIX,icloud-content.com,{{ api_rule }}
 DOMAIN-SUFFIX,me.com,{{ api_rule }}

@@ -76,7 +76,7 @@ async function createFn(name, verbose, useCnpm) {
       update: 'surgio generate',
     },
     engines: {
-      "node": "^10"
+      "node": "^12"
     }
   };
   const allDependencies = ['surgio'];
