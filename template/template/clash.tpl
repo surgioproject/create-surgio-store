@@ -27,7 +27,7 @@ dns:
 
 proxies: {{ getClashNodes(nodeList) | json }}
 
-proxy-group:
+proxy-groups:
 - type: select
   name: 🚀 Proxy
   proxies: {{ getClashNodeNames(nodeList) | json }}
