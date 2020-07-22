@@ -1,3 +1,12 @@
+## [2.0.2](https://github.com/geekdada/create-surgio-store/compare/v2.0.1...v2.0.2) (2020-07-22)
+
+
+### Bug Fixes
+
+* clash syntax ([56bde89](https://github.com/geekdada/create-surgio-store/commit/56bde89086a103bad18db541dc4948b283f0243d))
+
+
+
 ## [2.0.1](https://github.com/geekdada/create-surgio-store/compare/v2.0.0...v2.0.1) (2020-07-14)
 
 
