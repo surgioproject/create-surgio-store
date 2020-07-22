@@ -57,7 +57,7 @@ proxy-groups:
     - DIRECT
     - 🍎 Apple
 
-Rule:
+rules:
 {{ apple_rules.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') | clash }}
 {{ remoteSnippets.netflix.main('🎬 Netflix') | clash }}
 {{ remoteSnippets.hbo.main('🚀 Proxy') | clash }}
