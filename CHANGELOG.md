@@ -1,3 +1,12 @@
+## [2.0.3](https://github.com/geekdada/create-surgio-store/compare/v2.0.2...v2.0.3) (2020-10-31)
+
+
+### Features
+
+* use new syntax ([591246a](https://github.com/geekdada/create-surgio-store/commit/591246a330d9197328c6ff4b06ec3b7959990fbd))
+
+
+
 ## [2.0.2](https://github.com/geekdada/create-surgio-store/compare/v2.0.1...v2.0.2) (2020-07-22)
 
 
