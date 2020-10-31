@@ -1,11 +1,10 @@
 {% import './snippet/blocked_rules.tpl' as blocked_rules %}
 {% import './snippet/direct_rules.tpl' as direct_rules %}
-{% import './snippet/apple_rules.tpl' as apple_rules %}
 {% import './snippet/nowe_rules.tpl' as nowe_rules %}
 {% import './snippet/youtube_rules.tpl' as youtube_rules %}
 {% import './snippet/us_rules.tpl' as us_rules %}
 
-{{ apple_rules.main('PROXY', '选择Apple接口策略，不懂就不选', '选择Apple资源策略，不懂就选DIRECT', 'DIRECT', 'PROXY') }}
+{{ remoteSnippets.apple.main('PROXY', '选择Apple接口策略，不懂就不选', '选择Apple资源策略，不懂就选DIRECT', 'DIRECT', 'PROXY') }}
 
 {{ remoteSnippets.hbo.main('选择HBO的策略，不懂就不选') }}
 

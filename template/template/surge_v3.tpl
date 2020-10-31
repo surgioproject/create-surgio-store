@@ -1,7 +1,6 @@
 #!MANAGED-CONFIG {{ downloadUrl }} interval=43200 strict=false
 
 {% import './snippet/direct_rules.tpl' as direct_rules %}
-{% import './snippet/apple_rules.tpl' as apple_rules %}
 {% import './snippet/youtube_rules.tpl' as youtube_rules %}
 {% import './snippet/us_rules.tpl' as us_rules %}
 {% import './snippet/blocked_rules.tpl' as blocked_rules %}
@@ -52,7 +51,7 @@ US = url-test, {{ getNodeNames(nodeList, usFilter) }}, url = {{ proxyTestUrl }},
 HK = url-test, {{ getNodeNames(nodeList, hkFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
 
 [Rule]
-{{ apple_rules.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') }}
+{{ remoteSnippets.apple.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') }}
 
 {{ remoteSnippets.netflix.main('🎬 Netflix') }}
 

@@ -1,4 +1,10 @@
 {% macro main(default_rule, api_rule, cdn_rule, location_rule, apple_news_rule) %}
+#
+# DEPRECATE WARNING
+#
+# 新版在 https://github.com/geekdada/surge-list/blob/master/surgio-snippet/apple.tpl
+#
+
 # http://www.jjinc.com.au/announcements/apple170008services
 #
 # Apple 直连

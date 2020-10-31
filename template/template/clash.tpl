@@ -1,7 +1,6 @@
 # {{ downloadUrl }}
 
 {% import './snippet/direct_rules.tpl' as direct_rules %}
-{% import './snippet/apple_rules.tpl' as apple_rules %}
 {% import './snippet/youtube_rules.tpl' as youtube_rules %}
 {% import './snippet/us_rules.tpl' as us_rules %}
 {% import './snippet/blocked_rules.tpl' as blocked_rules %}
@@ -58,7 +57,7 @@ proxy-groups:
     - 🍎 Apple
 
 rules:
-{{ apple_rules.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') | clash }}
+{{ remoteSnippets.apple.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') | clash }}
 {{ remoteSnippets.netflix.main('🎬 Netflix') | clash }}
 {{ remoteSnippets.hbo.main('🚀 Proxy') | clash }}
 {{ remoteSnippets.hulu.main('🚀 Proxy') | clash }}
