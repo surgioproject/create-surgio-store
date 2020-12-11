@@ -1,3 +1,12 @@
+## [2.0.4](https://github.com/geekdada/create-surgio-store/compare/v2.0.3...v2.0.4) (2020-12-11)
+
+
+### Features
+
+* remove old rule set ([8faa1e8](https://github.com/geekdada/create-surgio-store/commit/8faa1e86ed1dd3709c0d99b989bcd778a5725a79))
+
+
+
 ## [2.0.3](https://github.com/geekdada/create-surgio-store/compare/v2.0.2...v2.0.3) (2020-10-31)
 
 
