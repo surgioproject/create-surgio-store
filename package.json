@@ -14,7 +14,7 @@
   "scripts": {
     "test": "yarn test:lint && yarn test:unit",
     "test:lint": "eslint .",
-    "test:unit": "ava --timeout=10m",
+    "test:unit": "ava",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "pub": "np",
     "version": "npm run changelog && git add ."
@@ -58,6 +58,8 @@
     "failFast": true,
     "files": [
       "test/**/*.test.js"
-    ]
+    ],
+    "workerThreads": false,
+    "timeout": "10m"
   }
 }
