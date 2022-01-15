@@ -2,16 +2,16 @@
 
 'use strict';
 
-var currentNodeVersion = process.versions.node;
-var semver = currentNodeVersion.split('.');
-var major = semver[0];
+const currentNodeVersion = process.versions.node;
+const semver = currentNodeVersion.split('.');
+const major = semver[0];
 
-if (major < 10) {
+if (major < 12) {
   console.error(
     '你当前运行的 Node 版本 ' +
       currentNodeVersion +
       '.\n' +
-      'Surgio 需要 Node 10 以上版本。 \n' +
+      'Surgio 需要 Node 12 以上版本。 \n' +
       '请更新你的 Node 版本。'
   );
   process.exit(1);

@@ -3,12 +3,12 @@
 const { utils } = require('surgio');
 
 /**
- * 使用文档：https://surgio.royli.dev/
+ * 使用文档：https://surgio.js.org/
  */
 module.exports = {
   /**
    * 远程片段
-   * 文档：https://surgio.royli.dev/guide/custom-config.html#remotesnippets
+   * 文档：https://surgio.js.org/guide/custom-config.html#remotesnippets
    */
   remoteSnippets: [
     {
@@ -26,7 +26,7 @@ module.exports = {
     },
     {
       name: 'hbo', // 模板中对应 remoteSnippets.hbo
-      url: 'https://github.com/lhie1/Rules/raw/master/Surge/Surge%203/Provider/Media/HBO.list'
+      url: 'https://github.com/lhie1/Rules/raw/master/Surge/Surge%203/Provider/Media/HBO%20Max.list'
     },
     {
       name: 'hulu', // 模板中对应 remoteSnippets.hulu
@@ -149,7 +149,7 @@ module.exports = {
     shadowsocksFormat: 'ss', // 默认 'ss', 可选 'custom'
   },
   binPath: {
-    // 安装教程: https://surgio.royli.dev/guide/install-ssr-local.html
+    // 安装教程: https://surgio.js.org/guide/install-ssr-local.html
     shadowsocksr: '/usr/local/bin/ssr-local',
   },
   {{#if useAliyunOss}}

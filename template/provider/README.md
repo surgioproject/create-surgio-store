@@ -2,7 +2,7 @@
 
 ## 自定义 Provider
 
-- [文档](https://surgio.royli.dev/guide/custom-provider.html)
+- [文档](https://surgio.js.org/guide/custom-provider.html)
 
 ## 更新
 

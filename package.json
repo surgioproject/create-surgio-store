@@ -33,16 +33,20 @@
   },
   "homepage": "https://surgio.royli.dev",
   "devDependencies": {
-    "ava": "^3.10.1",
+    "@types/bluebird": "^3.5.36",
+    "@types/fs-extra": "^9.0.13",
+    "ava": "^4.0.1",
     "coffee": "^5.4.0",
     "conventional-changelog-cli": "^2.0.34",
     "eslint": "^7.4.0",
-    "np": "^6.3.2"
+    "np": "^6.3.2",
+    "prettier": "^2.5.1"
   },
   "engines": {
     "node": ">=12.0.0"
   },
   "dependencies": {
+    "bluebird": "^3.7.2",
     "chalk": "^4.1.0",
     "commander": "^5.1.0",
     "cross-spawn": "^7.0.3",
