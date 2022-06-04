@@ -1,3 +1,12 @@
+## [2.0.7](https://github.com/geekdada/create-surgio-store/compare/v2.0.6...v2.0.7) (2022-06-04)
+
+
+### Features
+
+* update templates ([d6b7ad9](https://github.com/geekdada/create-surgio-store/commit/d6b7ad9a42f715369a34cc59955b448409327a22))
+
+
+
 ## [2.0.6](https://github.com/geekdada/create-surgio-store/compare/v2.0.5...v2.0.6) (2022-01-15)
 
 
