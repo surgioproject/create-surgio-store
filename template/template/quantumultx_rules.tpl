@@ -1,20 +1,13 @@
-{% import './snippet/blocked_rules.tpl' as blocked_rules %}
-{% import './snippet/direct_rules.tpl' as direct_rules %}
-{% import './snippet/nowe_rules.tpl' as nowe_rules %}
-{% import './snippet/youtube_rules.tpl' as youtube_rules %}
-{% import './snippet/us_rules.tpl' as us_rules %}
-
-{{ remoteSnippets.apple.main('PROXY', 'Apple', 'Apple CDN', 'DIRECT', 'PROXY') | quantumultx }}
-{{ remoteSnippets.hbo.main('PROXY') | quantumultx }}
-{{ us_rules.main('🇺🇸 Auto US') | quantumultx }}
-{{ remoteSnippets.netflix.main('Netflix') | quantumultx }}
-{{ remoteSnippets.hulu.main('PROXY') | quantumultx }}
-{{ remoteSnippets.telegram.main('PROXY') | quantumultx }}
-{{ youtube_rules.main('YouTube') | quantumultx }}
-{{ remoteSnippets.paypal.main('Paypal') | quantumultx }}
-{{ nowe_rules.main('PROXY') | quantumultx }}
-{{ blocked_rules.main('PROXY') | quantumultx }}
-{{ direct_rules.main('DIRECT') | quantumultx }}
+{% filter quantumultx %}
+{{ remoteSnippets.apple.main('PROXY', 'Apple', 'Apple CDN', 'DIRECT', 'PROXY') }}
+{{ remoteSnippets.hbo.main('PROXY') }}
+{{ remoteSnippets.netflix.main('Netflix') }}
+{{ remoteSnippets.telegram.main('PROXY') }}
+{{ snippet("snippet/youtube_rules.tpl").main('YouTube') }}
+{{ snippet("snippet/blocked_rules.tpl").main('PROXY') }}
+{{ snippet("snippet/direct_rules.tpl").main('DIRECT') }}
+{{ remoteSnippets.overseaTlds.main('PROXY') }}
+{% endfilter %}
 
 # LAN, debugging rules should place above this line
 DOMAIN-SUFFIX,local,DIRECT

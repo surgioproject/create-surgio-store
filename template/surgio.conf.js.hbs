@@ -13,32 +13,28 @@ module.exports = {
   remoteSnippets: [
     {
       name: 'apple', // 模板中对应 remoteSnippets.apple
-      url: 'https://raw.githubusercontent.com/geekdada/surge-list/master/surgio-snippet/apple.tpl',
+      url: 'https://github.com/geekdada/surge-list/raw/master/surgio-snippet/apple.tpl',
       surgioSnippet: true
     },
     {
       name: 'telegram', // 模板中对应 remoteSnippets.telegram
-      url: 'https://raw.githubusercontent.com/DivineEngine/Profiles/master/Surge/Ruleset/Extra/Telegram/Telegram.list'
+      url: 'https://github.com/DivineEngine/Profiles/raw/master/Surge/Ruleset/Extra/Telegram/Telegram.list'
     },
     {
       name: 'netflix', // 模板中对应 remoteSnippets.netflix
-      url: 'https://github.com/lhie1/Rules/raw/master/Surge/Surge%203/Provider/Media/Netflix.list'
+      url: 'https://github.com/DivineEngine/Profiles/raw/master/Surge/Ruleset/StreamingMedia/Video/Netflix.list'
     },
     {
       name: 'hbo', // 模板中对应 remoteSnippets.hbo
-      url: 'https://github.com/lhie1/Rules/raw/master/Surge/Surge%203/Provider/Media/HBO%20Max.list'
-    },
-    {
-      name: 'hulu', // 模板中对应 remoteSnippets.hulu
-      url: 'https://raw.githubusercontent.com/geekdada/surge-list/master/hulu.list'
+      url: 'https://github.com/DivineEngine/Profiles/raw/master/Surge/Ruleset/StreamingMedia/Video/HBO.list'
     },
     {
       name: 'disney', // 模板中对应 remoteSnippets.disney
-      url: 'https://raw.githubusercontent.com/geekdada/surge-list/master/disney.list',
+      url: 'https://github.com/geekdada/surge-list/raw/master/disney.list',
     },
     {
-      name: 'paypal', // 模板中对应 remoteSnippets.paypal
-      url: 'https://github.com/DivineEngine/Profiles/raw/master/Surge/Ruleset/Extra/PayPal.list'
+      name: 'overseaTlds', // 模板中对应 remoteSnippets.overseaTlds
+      url: 'https://github.com/geekdada/surge-list/raw/master/oversea-tld.list',
     },
   ],
   customFilters: {
@@ -53,23 +49,12 @@ module.exports = {
       template: 'surge_v3',
       provider: 'demo',
     },
-    {
-      name: 'Surge_simple.conf', // 旧版 Surge
-      template: 'surge_simple',
-      provider: 'subscribe_demo',
-    },
     // 合并 Provider
     {
       name: 'SurgeV3_combine.conf',
       template: 'surge_v3',
       provider: 'demo',
       combineProviders: ['subscribe_demo'],
-    },
-    // Surge + SSR
-    {
-      name: 'SurgeV3_ssr.conf',
-      template: 'surge_v3',
-      provider: 'ssr_subscribe_demo',
     },
 
     /**
@@ -87,26 +72,6 @@ module.exports = {
       customParams: {
         dns: true,
       }
-    },
-
-    /**
-     * Quantumult
-     */
-    {
-      name: 'Quantumult_rules.conf',
-      template: 'quantumult_rules',
-      provider: 'subscribe_demo',
-    },
-    {
-      name: 'Quantumult.conf',
-      template: 'quantumult',
-      provider: 'subscribe_demo',
-    },
-    {
-      // 给 Quantumult 提供订阅地址
-      name: 'Shadowsocks_subscribe.conf',
-      template: 'shadowsocks_subscribe',
-      provider: 'subscribe_demo',
     },
 
     /**
@@ -144,14 +109,6 @@ module.exports = {
    * 例如阿里云 OSS 的访问地址 https://xxx.oss-cn-hangzhou.aliyuncs.com/
    */
   urlBase: 'https://example.com/',
-  surgeConfig: {
-    v2ray: 'native', // 默认 'native', 可选 'external'
-    shadowsocksFormat: 'ss', // 默认 'ss', 可选 'custom'
-  },
-  binPath: {
-    // 安装教程: https://surgio.js.org/guide/install-ssr-local.html
-    shadowsocksr: '/usr/local/bin/ssr-local',
-  },
   {{#if useAliyunOss}}
   upload: {
     // 默认保存至根目录，可以在此修改子目录名，以 / 结尾，默认为 /

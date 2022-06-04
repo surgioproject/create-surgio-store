@@ -1,36 +1,34 @@
-{% macro main(rule) %}
 # 可能被屏蔽
-DOMAIN-KEYWORD,evernote,{{ rule }}
+DOMAIN-KEYWORD,evernote
 
-# Bloombeg
-USER-AGENT,Bloomberg*,{{ rule }}
+# Bloomberg
+USER-AGENT,Bloomberg*
 
 # Taiwan
-DOMAIN-SUFFIX,tw,{{ rule }}
+DOMAIN-SUFFIX,tw
 
-DOMAIN-KEYWORD,bitly,{{ rule }}
-DOMAIN-KEYWORD,blogspot,{{ rule }}
-DOMAIN-KEYWORD,dropbox,{{ rule }}
-DOMAIN-KEYWORD,facebook,{{ rule }}
-DOMAIN-KEYWORD,gmail,{{ rule }}
-DOMAIN-KEYWORD,google,{{ rule }}
-DOMAIN-KEYWORD,instagram,{{ rule }}
-DOMAIN-KEYWORD,oculus,{{ rule }}
-DOMAIN-KEYWORD,twitter,{{ rule }}
-DOMAIN-KEYWORD,whatsapp,{{ rule }}
-DOMAIN-KEYWORD,youtube,{{ rule }}
+DOMAIN-KEYWORD,bitly
+DOMAIN-KEYWORD,blogspot
+DOMAIN-KEYWORD,dropbox
+DOMAIN-KEYWORD,facebook
+DOMAIN-KEYWORD,gmail
+DOMAIN-KEYWORD,google
+DOMAIN-KEYWORD,instagram
+DOMAIN-KEYWORD,oculus
+DOMAIN-KEYWORD,twitter
+DOMAIN-KEYWORD,whatsapp
+DOMAIN-KEYWORD,youtube
 
-DOMAIN-SUFFIX,cdn.ampproject.org,{{ rule }}
-DOMAIN-SUFFIX,fb.com,{{ rule }}
-DOMAIN-SUFFIX,fb.me,{{ rule }}
-DOMAIN-SUFFIX,fbcdn.net,{{ rule }}
-DOMAIN-SUFFIX,gstatic.com,{{ rule }}
-DOMAIN-SUFFIX,scdn.co,{{ rule }}
-DOMAIN-SUFFIX,t.co,{{ rule }}
-DOMAIN-SUFFIX,telegra.ph,{{ rule }}
-DOMAIN-SUFFIX,twimg.co,{{ rule }}
-DOMAIN-SUFFIX,twimg.com,{{ rule }}
-DOMAIN-SUFFIX,twitpic.com,{{ rule }}
-DOMAIN-SUFFIX,youtu.be,{{ rule }}
-DOMAIN-SUFFIX,ytimg.com,{{ rule }}
-{% endmacro %}
+DOMAIN-SUFFIX,cdn.ampproject.org
+DOMAIN-SUFFIX,fb.com
+DOMAIN-SUFFIX,fb.me
+DOMAIN-SUFFIX,fbcdn.net
+DOMAIN-SUFFIX,gstatic.com
+DOMAIN-SUFFIX,scdn.co
+DOMAIN-SUFFIX,t.co
+DOMAIN-SUFFIX,telegra.ph
+DOMAIN-SUFFIX,twimg.co
+DOMAIN-SUFFIX,twimg.com
+DOMAIN-SUFFIX,twitpic.com
+DOMAIN-SUFFIX,youtu.be
+DOMAIN-SUFFIX,ytimg.com

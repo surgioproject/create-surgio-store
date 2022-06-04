@@ -1,10 +1,5 @@
 # {{ downloadUrl }}
 
-{% import './snippet/direct_rules.tpl' as direct_rules %}
-{% import './snippet/youtube_rules.tpl' as youtube_rules %}
-{% import './snippet/us_rules.tpl' as us_rules %}
-{% import './snippet/blocked_rules.tpl' as blocked_rules %}
-
 external-controller: 127.0.0.1:9090
 port: 7890
 socks-port: 7891
@@ -57,15 +52,16 @@ proxy-groups:
     - 🍎 Apple
 
 rules:
-{{ remoteSnippets.apple.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') | clash }}
-{{ remoteSnippets.netflix.main('🎬 Netflix') | clash }}
-{{ remoteSnippets.hbo.main('🚀 Proxy') | clash }}
-{{ remoteSnippets.hulu.main('🚀 Proxy') | clash }}
-{{ youtube_rules.main('🚀 Proxy') | clash }}
-{{ us_rules.main('US') | clash }}
-{{ remoteSnippets.telegram.main('🚀 Proxy') | clash }}
-{{ blocked_rules.main('🚀 Proxy') | clash }}
-{{ direct_rules.main('DIRECT') | clash }}
+{% filter quantumultx %}
+{{ remoteSnippets.apple.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') }}
+{{ remoteSnippets.netflix.main('🎬 Netflix') }}
+{{ remoteSnippets.hbo.main('🚀 Proxy') }}
+{{ snippet("snippet/youtube_rules.tpl").main('📺 YouTube') }}
+{{ remoteSnippets.telegram.main('🚀 Proxy') }}
+{{ snippet("snippet/blocked_rules.tpl").main('🚀 Proxy') }}
+{{ snippet("snippet/direct_rules.tpl").main('DIRECT') }}
+{{ remoteSnippets.overseaTlds.main('🚀 Proxy')}}
+{% endfilter %}
 
 # LAN
 - DOMAIN-SUFFIX,local,DIRECT

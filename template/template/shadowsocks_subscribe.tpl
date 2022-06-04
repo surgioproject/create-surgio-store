@@ -1,1 +1,0 @@
-{{ getQuantumultNodes(nodeList, provider) | base64 }}

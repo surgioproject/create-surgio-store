@@ -1,10 +1,5 @@
 #!MANAGED-CONFIG {{ downloadUrl }} interval=43200 strict=false
 
-{% import './snippet/direct_rules.tpl' as direct_rules %}
-{% import './snippet/youtube_rules.tpl' as youtube_rules %}
-{% import './snippet/us_rules.tpl' as us_rules %}
-{% import './snippet/blocked_rules.tpl' as blocked_rules %}
-
 [General]
 # 日志等级: warning, notify, info, verbose (默认值: notify)
 loglevel = notify
@@ -53,23 +48,20 @@ HK = url-test, {{ getNodeNames(nodeList, hkFilter) }}, url = {{ proxyTestUrl }},
 [Rule]
 {{ remoteSnippets.apple.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') }}
 
-{{ remoteSnippets.netflix.main('🎬 Netflix') }}
+RULE-SET,{{ remoteSnippets.netflix.url }},🎬 Netflix
 
-{{ remoteSnippets.hbo.main('🎬 Netflix') }}
+RULE-SET,{{ remoteSnippets.hbo.url }},🎬 Netflix
 
-{{ remoteSnippets.hulu.main('🚀 Proxy') }}
+{{ snippet("snippet/youtube_rules.tpl").main('📺 YouTube') }}
 
-{{ youtube_rules.main('📺 YouTube') }}
+RULE-SET,{{ remoteSnippets.telegram.url }},🚀 Proxy
 
-{{ us_rules.main('US') }}
+{{ snippet("snippet/blocked_rules.tpl").main('🚀 Proxy') }}
 
-{{ remoteSnippets.telegram.main('🚀 Proxy') }}
+{{ snippet("snippet/direct_rules.tpl").main('DIRECT') }}
 
-{{ blocked_rules.main('🚀 Proxy') }}
+RULE-SET,{{ remoteSnippets.overseaTlds.url }},🚀 Proxy
 
-{{ direct_rules.main('DIRECT') }}
-
-# Rulesets
 RULE-SET,SYSTEM,DIRECT
 
 # LAN

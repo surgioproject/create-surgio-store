@@ -10,6 +10,7 @@ const inquirer = require('inquirer')
 const Handlebars = require('handlebars')
 const Promise = require('bluebird')
 
+const { join, resolve } = path
 const packageJson = require('./package.json')
 const errorLogFilePatterns = [
   'npm-debug.log',
@@ -53,7 +54,7 @@ createFn(projectName, program.verbose, program.useCnpm).catch((error) => {
 })
 
 async function createFn(name, verbose, useCnpm) {
-  const root = path.resolve(name)
+  const root = resolve(name)
   const appName = path.basename(root)
 
   fs.ensureDirSync(name)
@@ -70,9 +71,6 @@ async function createFn(name, verbose, useCnpm) {
     private: true,
     scripts: {
       update: 'surgio generate',
-    },
-    engines: {
-      node: '^12',
     },
   }
   const allDependencies = ['surgio']
@@ -100,19 +98,50 @@ async function createFn(name, verbose, useCnpm) {
     console.log('若对信息收集感到不适，可以稍后在 surgio.conf.js 中关闭')
   }
 
+  // VSCode settings
+  await fs.mkdirp(join(root, '.vscode'))
   await fs.writeFile(
-    path.join(root, 'package.json'),
+    join(root, '.vscode/extensions.json'),
+    JSON.stringify(
+      {
+        extensions: ['dbaeumer.vscode-eslint', 'ronnidc.nunjucks'],
+      },
+      null,
+      2
+    ),
+    {
+      encoding: 'utf8',
+    }
+  )
+  await fs.writeFile(
+    join(root, '.vscode/settings.json'),
+    JSON.stringify(
+      {
+        'files.associations': {
+          '*.tpl': 'nunjucks',
+        },
+      },
+      null,
+      2
+    ),
+    {
+      encoding: 'utf8',
+    }
+  )
+
+  await fs.writeFile(
+    join(root, 'package.json'),
     JSON.stringify(packageJson, null, 2) + os.EOL
   )
 
   if (useCnpm) {
     await fs.writeFile(
-      path.join(root, '.npmrc'),
-      `registry=https://registry.npm.taobao.org` + os.EOL
+      join(root, '.npmrc'),
+      `registry=https://registry.npmmirror.com/` + os.EOL
     )
     // eslint-disable-next-line require-atomic-updates
     process.env.FSEVENTS_BINARY_HOST_MIRROR =
-      'https://npm.taobao.org/mirrors/fsevents'
+      'https://npmmirror.com/mirrors/fsevents'
   }
 
   process.chdir(root)
@@ -140,26 +169,26 @@ async function createFn(name, verbose, useCnpm) {
       'package-lock.json',
       'node_modules',
     ]
-    const currentFiles = fs.readdirSync(path.join(root))
+    const currentFiles = fs.readdirSync(join(root))
     currentFiles.forEach((file) => {
       knownGeneratedFiles.forEach((fileToMatch) => {
         // This removes all knownGeneratedFiles.
         if (file === fileToMatch) {
           console.log(`准备删除已生成的文件... ${chalk.cyan(file)}`)
-          fs.removeSync(path.join(root, file))
+          fs.removeSync(join(root, file))
         }
       })
     })
-    const remainingFiles = fs.readdirSync(path.join(root))
+    const remainingFiles = fs.readdirSync(join(root))
     if (!remainingFiles.length) {
       // Delete target folder if empty
       console.log(
-        `删除位于 ${chalk.cyan(path.resolve(root, '..'))} 的 ${chalk.cyan(
+        `删除位于 ${chalk.cyan(resolve(root, '..'))} 的 ${chalk.cyan(
           `${appName}/`
         )}`
       )
-      process.chdir(path.resolve(root, '..'))
-      fs.removeSync(path.join(root))
+      process.chdir(resolve(root, '..'))
+      fs.removeSync(join(root))
     }
     console.log('已完成')
     process.exit(1)
@@ -237,17 +266,18 @@ function isSafeToCreateProjectIn(root, name) {
   }
 
   // Remove any remnant files from a previous installation
-  const currentFiles = fs.readdirSync(path.join(root))
+  const currentFiles = fs.readdirSync(join(root))
   currentFiles.forEach((file) => {
     errorLogFilePatterns.forEach((errorLogFilePattern) => {
       // This will catch `(npm-debug|yarn-error|yarn-debug).log*` files
       if (file.indexOf(errorLogFilePattern) === 0) {
-        fs.removeSync(path.join(root, file))
+        fs.removeSync(join(root, file))
       }
     })
   })
   return true
 }
+
 function checkThatNpmCanReadCwd() {
   const cwd = process.cwd()
   let childOutput = null
@@ -308,6 +338,7 @@ function checkThatNpmCanReadCwd() {
   }
   return false
 }
+
 function install(root, dependencies, verbose) {
   return new Promise((resolve, reject) => {
     let command
@@ -334,27 +365,28 @@ function install(root, dependencies, verbose) {
     })
   })
 }
+
 async function renderTemplates(root, useAliyunOss, allowAnalytics) {
   const confTpl = Handlebars.compile(
-    await fs.readFile(path.join(__dirname, 'template/surgio.conf.js.hbs'), {
+    await fs.readFile(join(__dirname, 'template/surgio.conf.js.hbs'), {
       encoding: 'utf8',
     })
   )
   const gitignoreTpl = Handlebars.compile(
-    await fs.readFile(path.join(__dirname, 'template/gitignore.hbs'), {
+    await fs.readFile(join(__dirname, 'template/gitignore.hbs'), {
       encoding: 'utf8',
     })
   )
   const eslintrcTpl = Handlebars.compile(
-    await fs.readFile(path.join(__dirname, 'template/eslintrc.js.hbs'), {
+    await fs.readFile(join(__dirname, 'template/eslintrc.js.hbs'), {
       encoding: 'utf8',
     })
   )
 
   const paths = {
-    conf: path.join(root, 'surgio.conf.js'),
-    gitignore: path.join(root, '.gitignore'),
-    eslintrc: path.join(root, '.eslintrc.js'),
+    conf: join(root, 'surgio.conf.js'),
+    gitignore: join(root, '.gitignore'),
+    eslintrc: join(root, '.eslintrc.js'),
   }
 
   await fs.writeFile(
@@ -373,11 +405,12 @@ async function renderTemplates(root, useAliyunOss, allowAnalytics) {
   }
   console.log()
 }
+
 async function copyFolders(root) {
   const folders = ['provider', 'template']
 
   await Promise.each(folders, async (item) => {
-    const source = path.join(__dirname, `template/${item}`)
-    await fs.copy(source, path.join(root, item))
+    const source = join(__dirname, `template/${item}`)
+    await fs.copy(source, join(root, item))
   })
 }

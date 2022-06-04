@@ -19,7 +19,6 @@ static=Netflix, PROXY, {{ getNodeNames(nodeList, netflixFilter) }}, img-url=http
 static=YouTube, PROXY, {{ getNodeNames(nodeList, youtubePremiumFilter) }}, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/YouTube.png
 static=Apple, DIRECT, 🇺🇸 Auto US, 🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Apple.png
 static=Apple CDN, DIRECT, Apple, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Apple.png
-static=Paypal, DIRECT, 🇺🇸 Auto US, 🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/PayPal.png
 
 [filter_remote]
 {{ getDownloadUrl('QuantumultX_rules.conf') }}, tag=分流规则

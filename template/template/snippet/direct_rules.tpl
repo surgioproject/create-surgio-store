@@ -1,178 +1,176 @@
-{% macro main(rule) %}
 # Alibaba
-DOMAIN-KEYWORD,alibaba-inc,{{ rule }}
-DOMAIN-KEYWORD,alibaba,{{ rule }}
-DOMAIN-KEYWORD,alipay-inc,{{ rule }}
-DOMAIN-KEYWORD,aliyuncs,{{ rule }}
-DOMAIN-KEYWORD,alipay,{{ rule }}
-DOMAIN-KEYWORD,taobao,{{ rule }}
-DOMAIN-KEYWORD,alicdn,{{ rule }}
-DOMAIN-KEYWORD,aliyun,{{ rule }}
-DOMAIN-KEYWORD,9game,{{ rule }}
-DOMAIN-KEYWORD,ucweb,{{ rule }}
+DOMAIN-KEYWORD,alibaba-inc
+DOMAIN-KEYWORD,alibaba
+DOMAIN-KEYWORD,alipay-inc
+DOMAIN-KEYWORD,aliyuncs
+DOMAIN-KEYWORD,alipay
+DOMAIN-KEYWORD,taobao
+DOMAIN-KEYWORD,alicdn
+DOMAIN-KEYWORD,aliyun
+DOMAIN-KEYWORD,9game
+DOMAIN-KEYWORD,ucweb
 
 # Battle.net
-DOMAIN-SUFFIX,blizzard.com,{{ rule }}
-DOMAIN-SUFFIX,battle.net,{{ rule }}
+DOMAIN-SUFFIX,blizzard.com
+DOMAIN-SUFFIX,battle.net
 
 # P2P
-PROCESS-NAME,*Folx*,{{ rule }}
-PROCESS-NAME,*Thunder*,{{ rule }}
-PROCESS-NAME,*DownloadService*,{{ rule }}
-PROCESS-NAME,*Soda*,{{ rule }}
-PROCESS-NAME,*p4pclient*,{{ rule }}
-PROCESS-NAME,aria2c,{{ rule }}
-PROCESS-NAME,fdm,{{ rule }}
-PROCESS-NAME,Folx,{{ rule }}
-PROCESS-NAME,NetTransport,{{ rule }}
-PROCESS-NAME,Transmission,{{ rule }}
-PROCESS-NAME,uTorrent,{{ rule }}
-PROCESS-NAME,WebTorrent,{{ rule }}
-PROCESS-NAME,WebTorrent Helper,{{ rule }}
-DOMAIN-KEYWORD,tracker,{{ rule }}
+PROCESS-NAME,*Folx*
+PROCESS-NAME,*Thunder*
+PROCESS-NAME,*DownloadService*
+PROCESS-NAME,*Soda*
+PROCESS-NAME,*p4pclient*
+PROCESS-NAME,aria2c
+PROCESS-NAME,fdm
+PROCESS-NAME,Folx
+PROCESS-NAME,NetTransport
+PROCESS-NAME,Transmission
+PROCESS-NAME,uTorrent
+PROCESS-NAME,WebTorrent
+PROCESS-NAME,WebTorrent Helper
+DOMAIN-KEYWORD,tracker
 
 # Booking
-DOMAIN-SUFFIX,booking.com,{{ rule }}
-DOMAIN-SUFFIX,booking.cn,{{ rule }}
+DOMAIN-SUFFIX,booking.com
+DOMAIN-SUFFIX,booking.cn
 
 # Misc
-PROCESS-NAME,百度网盘,{{ rule }}
-PROCESS-NAME,*Clash*,{{ rule }}
-PROCESS-NAME,*clash*,{{ rule }}
-PROCESS-NAME,v2ray,{{ rule }}
-PROCESS-NAME,ss-local,{{ rule }}
-PROCESS-NAME,ssr-local,{{ rule }}
+PROCESS-NAME,百度网盘
+PROCESS-NAME,*Clash*
+PROCESS-NAME,*clash*
+PROCESS-NAME,v2ray
+PROCESS-NAME,ss-local
+PROCESS-NAME,ssr-local
 # iStat Menu IP Test
-DOMAIN,ip.bjango.com,{{ rule }}
-DOMAIN-SUFFIX,biquge.com.tw,{{ rule }}
-DOMAIN-SUFFIX,maoyun.tv,{{ rule }}
-DOMAIN-SUFFIX,moke.com,{{ rule }}
-DOMAIN-SUFFIX,test-ipv6.com,{{ rule }}
-DOMAIN-SUFFIX,zimuzu.tv,{{ rule }}
-DOMAIN-SUFFIX,zmzapi.com,{{ rule }}
-DOMAIN-SUFFIX,zmzapi.net,{{ rule }}
-DOMAIN-SUFFIX,zmzfile.com,{{ rule }}
+DOMAIN,ip.bjango.com
+DOMAIN-SUFFIX,biquge.com.tw
+DOMAIN-SUFFIX,maoyun.tv
+DOMAIN-SUFFIX,moke.com
+DOMAIN-SUFFIX,test-ipv6.com
+DOMAIN-SUFFIX,zimuzu.tv
+DOMAIN-SUFFIX,zmzapi.com
+DOMAIN-SUFFIX,zmzapi.net
+DOMAIN-SUFFIX,zmzfile.com
 
 # China Apps
-USER-AGENT,MApi*,{{ rule }}
-USER-AGENT,MicroMessenger*,{{ rule }}
-USER-AGENT,WeChat*,{{ rule }}
-DOMAIN-SUFFIX,cn,{{ rule }}
-DOMAIN-KEYWORD,-cn,{{ rule }}
-DOMAIN-KEYWORD,alicdn,{{ rule }}
-DOMAIN-SUFFIX,126.com,{{ rule }}
-DOMAIN-SUFFIX,126.net,{{ rule }}
-DOMAIN-SUFFIX,127.net,{{ rule }}
-DOMAIN-SUFFIX,163.com,{{ rule }}
-DOMAIN-SUFFIX,360buyimg.com,{{ rule }}
-DOMAIN-SUFFIX,36kr.com,{{ rule }}
-DOMAIN-SUFFIX,acfun.tv,{{ rule }}
-DOMAIN-SUFFIX,air-matters.com,{{ rule }}
-DOMAIN-SUFFIX,aixifan.com,{{ rule }}
-DOMAIN-SUFFIX,weibo.com,{{ rule }}
-DOMAIN-SUFFIX,alipayobjects.com,{{ rule }}
-DOMAIN-SUFFIX,amap.com,{{ rule }}
-DOMAIN-SUFFIX,autonavi.com,{{ rule }}
-DOMAIN-SUFFIX,baidu.com,{{ rule }}
-DOMAIN-SUFFIX,baidupcs.com,{{ rule }}
-DOMAIN-SUFFIX,bdimg.com,{{ rule }}
-DOMAIN-SUFFIX,bdstatic.com,{{ rule }}
-DOMAIN-SUFFIX,bilibili.com,{{ rule }}
-DOMAIN-SUFFIX,caiyunapp.com,{{ rule }}
-DOMAIN-SUFFIX,clouddn.com,{{ rule }}
-DOMAIN-SUFFIX,cnbeta.com,{{ rule }}
-DOMAIN-SUFFIX,cnbetacdn.com,{{ rule }}
-DOMAIN-SUFFIX,cootekservice.com,{{ rule }}
-DOMAIN-SUFFIX,csdn.net,{{ rule }}
-DOMAIN-SUFFIX,ctrip.com,{{ rule }}
-DOMAIN-SUFFIX,dgtle.com,{{ rule }}
-DOMAIN-SUFFIX,dianping.com,{{ rule }}
-DOMAIN-SUFFIX,douban.com,{{ rule }}
-DOMAIN-SUFFIX,doubanio.com,{{ rule }}
-DOMAIN-SUFFIX,duokan.com,{{ rule }}
-DOMAIN-SUFFIX,easou.com,{{ rule }}
-DOMAIN-SUFFIX,ele.me,{{ rule }}
-DOMAIN-SUFFIX,fast.com,{{ rule }}
-DOMAIN-SUFFIX,feng.com,{{ rule }}
-DOMAIN-SUFFIX,fir.im,{{ rule }}
-DOMAIN-SUFFIX,frdic.com,{{ rule }}
-DOMAIN-SUFFIX,g-cores.com,{{ rule }}
-DOMAIN-SUFFIX,godic.net,{{ rule }}
-DOMAIN-SUFFIX,gtimg.com,{{ rule }}
-DOMAIN-SUFFIX,hongxiu.com,{{ rule }}
-DOMAIN-SUFFIX,hxcdn.net,{{ rule }}
-DOMAIN-SUFFIX,iciba.com,{{ rule }}
-DOMAIN-SUFFIX,ifeng.com,{{ rule }}
-DOMAIN-SUFFIX,ifengimg.com,{{ rule }}
-DOMAIN-SUFFIX,images-amazon.com,{{ rule }}
-DOMAIN-SUFFIX,ipip.net,{{ rule }}
-DOMAIN-SUFFIX,iqiyi.com,{{ rule }}
-DOMAIN-SUFFIX,jd.com,{{ rule }}
-DOMAIN-SUFFIX,jianshu.com,{{ rule }}
-DOMAIN-SUFFIX,knewone.com,{{ rule }}
-DOMAIN-SUFFIX,le.com,{{ rule }}
-DOMAIN-SUFFIX,lecloud.com,{{ rule }}
-DOMAIN-SUFFIX,lemicp.com,{{ rule }}
-DOMAIN-SUFFIX,luoo.net,{{ rule }}
-DOMAIN-SUFFIX,meituan.com,{{ rule }}
-DOMAIN-SUFFIX,meituan.net,{{ rule }}
-DOMAIN-SUFFIX,mi.com,{{ rule }}
-DOMAIN-SUFFIX,miaopai.com,{{ rule }}
-DOMAIN-SUFFIX,miui.com,{{ rule }}
-DOMAIN-SUFFIX,miwifi.com,{{ rule }}
-DOMAIN-SUFFIX,mob.com,{{ rule }}
-DOMAIN-SUFFIX,netease.com,{{ rule }}
-DOMAIN-SUFFIX,oschina.net,{{ rule }}
-DOMAIN-SUFFIX,ppsimg.com,{{ rule }}
-DOMAIN-SUFFIX,pstatp.com,{{ rule }}
-DOMAIN-SUFFIX,qcloud.com,{{ rule }}
-DOMAIN-SUFFIX,qdaily.com,{{ rule }}
-DOMAIN-SUFFIX,qdmm.com,{{ rule }}
-DOMAIN-SUFFIX,qhimg.com,{{ rule }}
-DOMAIN-SUFFIX,qidian.com,{{ rule }}
-DOMAIN-SUFFIX,qihucdn.com,{{ rule }}
-DOMAIN-SUFFIX,qiniu.com,{{ rule }}
-DOMAIN-SUFFIX,qiniucdn.com,{{ rule }}
-DOMAIN-SUFFIX,qiyipic.com,{{ rule }}
-DOMAIN-SUFFIX,qq.com,{{ rule }}
-DOMAIN-SUFFIX,qqurl.com,{{ rule }}
-DOMAIN-SUFFIX,rarbg.is,{{ rule }}
-DOMAIN-SUFFIX,rr.tv,{{ rule }}
-DOMAIN-SUFFIX,ruguoapp.com,{{ rule }}
-DOMAIN-SUFFIX,segmentfault.com,{{ rule }}
-DOMAIN-SUFFIX,sinaapp.com,{{ rule }}
-DOMAIN-SUFFIX,sogou.com,{{ rule }}
-DOMAIN-SUFFIX,sogoucdn.com,{{ rule }}
-DOMAIN-SUFFIX,sohu.com,{{ rule }}
-DOMAIN-SUFFIX,soku.com,{{ rule }}
-DOMAIN-SUFFIX,speedtest.net,{{ rule }}
-DOMAIN-SUFFIX,sspai.com,{{ rule }}
-DOMAIN-SUFFIX,suning.com,{{ rule }}
-DOMAIN-SUFFIX,tenpay.com,{{ rule }}
-DOMAIN-SUFFIX,tmall.com,{{ rule }}
-DOMAIN-SUFFIX,tudou.com,{{ rule }}
-DOMAIN-SUFFIX,umetrip.com,{{ rule }}
-DOMAIN-SUFFIX,upaiyun.com,{{ rule }}
-DOMAIN,update.microsoft.com,{{ rule }}
-DOMAIN-SUFFIX,upyun.com,{{ rule }}
-DOMAIN-SUFFIX,veryzhun.com,{{ rule }}
-DOMAIN-SUFFIX,weibo.com,{{ rule }}
-DOMAIN-SUFFIX,xiami.com,{{ rule }}
-DOMAIN-SUFFIX,xiami.net,{{ rule }}
-DOMAIN-SUFFIX,xiaomicp.com,{{ rule }}
-DOMAIN-SUFFIX,ximalaya.com,{{ rule }}
-DOMAIN-SUFFIX,xmcdn.com,{{ rule }}
-DOMAIN-SUFFIX,xunlei.com,{{ rule }}
-DOMAIN-SUFFIX,yhd.com,{{ rule }}
-DOMAIN-SUFFIX,yihaodianimg.com,{{ rule }}
-DOMAIN-SUFFIX,yinxiang.com,{{ rule }}
-DOMAIN-SUFFIX,ykimg.com,{{ rule }}
-DOMAIN-SUFFIX,youdao.com,{{ rule }}
-DOMAIN-SUFFIX,youku.com,{{ rule }}
-DOMAIN-SUFFIX,zealer.com,{{ rule }}
-DOMAIN-SUFFIX,zhihu.com,{{ rule }}
-DOMAIN-SUFFIX,zhimg.com,{{ rule }}
-DOMAIN-SUFFIX,chinacloudapi.cn,{{ rule }}
-DOMAIN-SUFFIX,mymm.com,{{ rule }}
-DOMAIN-SUFFIX,akadns.net,{{ rule }}
-{% endmacro %}
+USER-AGENT,MApi*
+USER-AGENT,MicroMessenger*
+USER-AGENT,WeChat*
+DOMAIN-SUFFIX,cn
+DOMAIN-KEYWORD,-cn
+DOMAIN-KEYWORD,alicdn
+DOMAIN-SUFFIX,126.com
+DOMAIN-SUFFIX,126.net
+DOMAIN-SUFFIX,127.net
+DOMAIN-SUFFIX,163.com
+DOMAIN-SUFFIX,360buyimg.com
+DOMAIN-SUFFIX,36kr.com
+DOMAIN-SUFFIX,acfun.tv
+DOMAIN-SUFFIX,air-matters.com
+DOMAIN-SUFFIX,aixifan.com
+DOMAIN-SUFFIX,weibo.com
+DOMAIN-SUFFIX,alipayobjects.com
+DOMAIN-SUFFIX,amap.com
+DOMAIN-SUFFIX,autonavi.com
+DOMAIN-SUFFIX,baidu.com
+DOMAIN-SUFFIX,baidupcs.com
+DOMAIN-SUFFIX,bdimg.com
+DOMAIN-SUFFIX,bdstatic.com
+DOMAIN-SUFFIX,bilibili.com
+DOMAIN-SUFFIX,caiyunapp.com
+DOMAIN-SUFFIX,clouddn.com
+DOMAIN-SUFFIX,cnbeta.com
+DOMAIN-SUFFIX,cnbetacdn.com
+DOMAIN-SUFFIX,cootekservice.com
+DOMAIN-SUFFIX,csdn.net
+DOMAIN-SUFFIX,ctrip.com
+DOMAIN-SUFFIX,dgtle.com
+DOMAIN-SUFFIX,dianping.com
+DOMAIN-SUFFIX,douban.com
+DOMAIN-SUFFIX,doubanio.com
+DOMAIN-SUFFIX,duokan.com
+DOMAIN-SUFFIX,easou.com
+DOMAIN-SUFFIX,ele.me
+DOMAIN-SUFFIX,fast.com
+DOMAIN-SUFFIX,feng.com
+DOMAIN-SUFFIX,fir.im
+DOMAIN-SUFFIX,frdic.com
+DOMAIN-SUFFIX,g-cores.com
+DOMAIN-SUFFIX,godic.net
+DOMAIN-SUFFIX,gtimg.com
+DOMAIN-SUFFIX,hongxiu.com
+DOMAIN-SUFFIX,hxcdn.net
+DOMAIN-SUFFIX,iciba.com
+DOMAIN-SUFFIX,ifeng.com
+DOMAIN-SUFFIX,ifengimg.com
+DOMAIN-SUFFIX,images-amazon.com
+DOMAIN-SUFFIX,ipip.net
+DOMAIN-SUFFIX,iqiyi.com
+DOMAIN-SUFFIX,jd.com
+DOMAIN-SUFFIX,jianshu.com
+DOMAIN-SUFFIX,knewone.com
+DOMAIN-SUFFIX,le.com
+DOMAIN-SUFFIX,lecloud.com
+DOMAIN-SUFFIX,lemicp.com
+DOMAIN-SUFFIX,luoo.net
+DOMAIN-SUFFIX,meituan.com
+DOMAIN-SUFFIX,meituan.net
+DOMAIN-SUFFIX,mi.com
+DOMAIN-SUFFIX,miaopai.com
+DOMAIN-SUFFIX,miui.com
+DOMAIN-SUFFIX,miwifi.com
+DOMAIN-SUFFIX,mob.com
+DOMAIN-SUFFIX,netease.com
+DOMAIN-SUFFIX,oschina.net
+DOMAIN-SUFFIX,ppsimg.com
+DOMAIN-SUFFIX,pstatp.com
+DOMAIN-SUFFIX,qcloud.com
+DOMAIN-SUFFIX,qdaily.com
+DOMAIN-SUFFIX,qdmm.com
+DOMAIN-SUFFIX,qhimg.com
+DOMAIN-SUFFIX,qidian.com
+DOMAIN-SUFFIX,qihucdn.com
+DOMAIN-SUFFIX,qiniu.com
+DOMAIN-SUFFIX,qiniucdn.com
+DOMAIN-SUFFIX,qiyipic.com
+DOMAIN-SUFFIX,qq.com
+DOMAIN-SUFFIX,qqurl.com
+DOMAIN-SUFFIX,rarbg.is
+DOMAIN-SUFFIX,rr.tv
+DOMAIN-SUFFIX,ruguoapp.com
+DOMAIN-SUFFIX,segmentfault.com
+DOMAIN-SUFFIX,sinaapp.com
+DOMAIN-SUFFIX,sogou.com
+DOMAIN-SUFFIX,sogoucdn.com
+DOMAIN-SUFFIX,sohu.com
+DOMAIN-SUFFIX,soku.com
+DOMAIN-SUFFIX,speedtest.net
+DOMAIN-SUFFIX,sspai.com
+DOMAIN-SUFFIX,suning.com
+DOMAIN-SUFFIX,tenpay.com
+DOMAIN-SUFFIX,tmall.com
+DOMAIN-SUFFIX,tudou.com
+DOMAIN-SUFFIX,umetrip.com
+DOMAIN-SUFFIX,upaiyun.com
+DOMAIN,update.microsoft.com
+DOMAIN-SUFFIX,upyun.com
+DOMAIN-SUFFIX,veryzhun.com
+DOMAIN-SUFFIX,weibo.com
+DOMAIN-SUFFIX,xiami.com
+DOMAIN-SUFFIX,xiami.net
+DOMAIN-SUFFIX,xiaomicp.com
+DOMAIN-SUFFIX,ximalaya.com
+DOMAIN-SUFFIX,xmcdn.com
+DOMAIN-SUFFIX,xunlei.com
+DOMAIN-SUFFIX,yhd.com
+DOMAIN-SUFFIX,yihaodianimg.com
+DOMAIN-SUFFIX,yinxiang.com
+DOMAIN-SUFFIX,ykimg.com
+DOMAIN-SUFFIX,youdao.com
+DOMAIN-SUFFIX,youku.com
+DOMAIN-SUFFIX,zealer.com
+DOMAIN-SUFFIX,zhihu.com
+DOMAIN-SUFFIX,zhimg.com
+DOMAIN-SUFFIX,chinacloudapi.cn
+DOMAIN-SUFFIX,mymm.com
+DOMAIN-SUFFIX,akadns.net
