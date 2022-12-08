@@ -52,7 +52,7 @@ proxy-groups:
     - 🍎 Apple
 
 rules:
-{% filter quantumultx %}
+{% filter clash %}
 {{ remoteSnippets.apple.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') }}
 {{ remoteSnippets.netflix.main('🎬 Netflix') }}
 {{ remoteSnippets.hbo.main('🚀 Proxy') }}
