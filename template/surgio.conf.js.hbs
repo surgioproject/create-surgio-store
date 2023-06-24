@@ -121,6 +121,14 @@ module.exports = {
     accessKeySecret: 'YOUR_ACCESS_KEY_SECRET',
   },
   {{/if}}
+  {{#if useGateway}}
+  gateway: {
+    auth: true,
+    accessToken: '修改我，用于登录认证',
+    viewerToken: '修改我，推荐使用更长并且随机的字符串',
+    useCacheOnError: false,
+  },
+  {{/if}}
   {{#if allowAnalytics}}
   // 非常有限的报错信息收集
   analytics: true,

@@ -37,13 +37,13 @@ hide-crashlytics-request = true
 {{ getSurgeNodes(nodeList) }}
 
 [Proxy Group]
-🚀 Proxy = select, {{ getNodeNames(nodeList) }}
-🎬 Netflix = select, {{ getNodeNames(nodeList, netflixFilter) }}
+🚀 Proxy = select, {{ getSurgeNodeNames(nodeList) }}
+🎬 Netflix = select, {{ getSurgeNodeNames(nodeList, netflixFilter) }}
 📺 YouTube = select, 🚀 Proxy, US, HK
 🍎 Apple = select, DIRECT, 🚀 Proxy, US, HK
 🍎 Apple CDN = select, DIRECT, 🍎 Apple
-US = url-test, {{ getNodeNames(nodeList, usFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
-HK = url-test, {{ getNodeNames(nodeList, hkFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
+US = url-test, {{ getSurgeNodeNames(nodeList, usFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
+HK = url-test, {{ getSurgeNodeNames(nodeList, hkFilter) }}, url = {{ proxyTestUrl }}, interval = 1200
 
 [Rule]
 {{ remoteSnippets.apple.main('🚀 Proxy', '🍎 Apple', '🍎 Apple CDN', 'DIRECT', 'US') }}

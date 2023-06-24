@@ -13,10 +13,10 @@ server=119.29.29.29
 {{ getDownloadUrl('Quantumult_subscribe_hk.conf') }}, tag=🇭🇰 HK
 
 [policy]
-available=🇺🇸 Auto US, {{ getNodeNames(nodeList, usFilter) }}
-available=🇭🇰 Auto HK, {{ getNodeNames(nodeList, hkFilter) }}
-static=Netflix, PROXY, {{ getNodeNames(nodeList, netflixFilter) }}, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netflix.png
-static=YouTube, PROXY, {{ getNodeNames(nodeList, youtubePremiumFilter) }}, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/YouTube.png
+available=🇺🇸 Auto US, {{ getQuantumultXNodeNames(nodeList, usFilter) }}
+available=🇭🇰 Auto HK, {{ getQuantumultXNodeNames(nodeList, hkFilter) }}
+static=Netflix, PROXY, {{ getQuantumultXNodeNames(nodeList, netflixFilter) }}, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Netflix.png
+static=YouTube, PROXY, {{ getQuantumultXNodeNames(nodeList, youtubePremiumFilter) }}, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/YouTube.png
 static=Apple, DIRECT, 🇺🇸 Auto US, 🇭🇰 Auto HK, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Apple.png
 static=Apple CDN, DIRECT, Apple, img-url=https://raw.githubusercontent.com/zealson/Zure/master/IconSet/Apple.png
 

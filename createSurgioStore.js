@@ -13,6 +13,7 @@ const Promise = require('bluebird')
 const { join, resolve } = path
 const packageJson = require('./package.json')
 const errorLogFilePatterns = [
+  'npm-error.log',
   'npm-debug.log',
   'yarn-error.log',
   'yarn-debug.log',
@@ -71,14 +72,28 @@ async function createFn(name, verbose, useCnpm) {
     private: true,
     scripts: {
       update: 'surgio generate',
+      start: 'node server.js',
+      lint: 'eslint . --ext .js',
+      format: 'prettier --write .',
+    },
+    engine: {
+      node: '>=18.0.0',
     },
   }
-  const allDependencies = ['surgio']
+  const allDependencies = ['surgio@^3']
   const useAliyunOss = process.stdout.isTTY
     ? await inquirer.prompt({
         type: 'confirm',
         name: 'useAliyunOss',
         message: '是否配置将配置文件上传至阿里云 OSS？（默认：是）',
+        default: true,
+      })
+    : true
+  const useGateway = process.stdout.isTTY
+    ? await inquirer.prompt({
+        type: 'confirm',
+        name: 'useGateway',
+        message: '是否配置使用网关？（默认：是）',
         default: true,
       })
     : true
@@ -97,14 +112,22 @@ async function createFn(name, verbose, useCnpm) {
   if (allowAnalytics) {
     console.log('若对信息收集感到不适，可以稍后在 surgio.conf.js 中关闭')
   }
+  if (useGateway) {
+    allDependencies.push('@surgio/gateway@^2')
+  }
 
   // VSCode settings
   await fs.mkdirp(join(root, '.vscode'))
+
   await fs.writeFile(
     join(root, '.vscode/extensions.json'),
     JSON.stringify(
       {
-        extensions: ['dbaeumer.vscode-eslint', 'ronnidc.nunjucks'],
+        extensions: [
+          'dbaeumer.vscode-eslint',
+          'eseom.nunjucks-template',
+          'esbenp.prettier-vscode',
+        ],
       },
       null,
       2
@@ -113,12 +136,17 @@ async function createFn(name, verbose, useCnpm) {
       encoding: 'utf8',
     }
   )
+
   await fs.writeFile(
     join(root, '.vscode/settings.json'),
     JSON.stringify(
       {
         'files.associations': {
           '*.tpl': 'nunjucks',
+        },
+        'editor.formatOnSave': true,
+        '[javascript]': {
+          'editor.formatter': 'esbenp.prettier-vscode',
         },
       },
       null,
@@ -194,7 +222,11 @@ async function createFn(name, verbose, useCnpm) {
     process.exit(1)
   })
 
-  await renderTemplates(root, useAliyunOss, allowAnalytics)
+  await renderTemplates(root, {
+    useAliyunOss,
+    allowAnalytics,
+    useGateway,
+  })
 
   await copyFolders(root)
 
@@ -366,7 +398,10 @@ function install(root, dependencies, verbose) {
   })
 }
 
-async function renderTemplates(root, useAliyunOss, allowAnalytics) {
+async function renderTemplates(
+  root,
+  { useAliyunOss, allowAnalytics, useGateway }
+) {
   const confTpl = Handlebars.compile(
     await fs.readFile(join(__dirname, 'template/surgio.conf.js.hbs'), {
       encoding: 'utf8',
@@ -382,11 +417,23 @@ async function renderTemplates(root, useAliyunOss, allowAnalytics) {
       encoding: 'utf8',
     })
   )
+  const prettierrcTpl = Handlebars.compile(
+    await fs.readFile(join(__dirname, 'template/prettierrc.js.hbs'), {
+      encoding: 'utf8',
+    })
+  )
+  const serverTpl = Handlebars.compile(
+    await fs.readFile(join(__dirname, 'template/server.js.hbs'), {
+      encoding: 'utf8',
+    })
+  )
 
   const paths = {
     conf: join(root, 'surgio.conf.js'),
     gitignore: join(root, '.gitignore'),
     eslintrc: join(root, '.eslintrc.js'),
+    prettierrc: join(root, '.prettierrc.js'),
+    server: join(root, 'server.js'),
   }
 
   await fs.writeFile(
@@ -394,10 +441,15 @@ async function renderTemplates(root, useAliyunOss, allowAnalytics) {
     confTpl({
       useAliyunOss,
       allowAnalytics,
+      useGateway,
     }) + os.EOL
   )
   await fs.writeFile(paths.gitignore, gitignoreTpl({}) + os.EOL)
   await fs.writeFile(paths.eslintrc, eslintrcTpl({}) + os.EOL)
+  await fs.writeFile(paths.prettierrc, prettierrcTpl({}) + os.EOL)
+  if (useGateway) {
+    await fs.writeFile(paths.server, serverTpl({}) + os.EOL)
+  }
 
   console.log(`配置已生成至 ${chalk.green(paths.conf)}，请将配置补全`)
   if (useAliyunOss) {

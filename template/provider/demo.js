@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = {
   type: 'custom',
@@ -7,21 +7,21 @@ module.exports = {
       nodeName: '🇺🇸US',
       type: 'shadowsocks',
       hostname: 'us.example.com',
-      port: '10000',
+      port: 10000,
       method: 'chacha20-ietf-poly1305',
       password: 'password',
       obfs: 'tls',
-      'obfs-host': 'gateway-carry.icloud.com',
-      'udp-relay': true,
+      obfsHost: 'gateway-carry.icloud.com',
+      udpRelay: true,
     },
     {
       nodeName: '🇭🇰HK(Netflix)',
       type: 'shadowsocks',
       hostname: 'hk.example.com',
-      port: '10000',
+      port: 10000,
       method: 'chacha20-ietf-poly1305',
       password: 'password',
-      'udp-relay': true,
+      udpRelay: true,
     },
   ],
-};
+}
