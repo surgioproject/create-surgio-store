@@ -12,6 +12,8 @@ server=119.29.29.29
 {{ getDownloadUrl('Quantumult_subscribe_us.conf') }}, tag=🇺🇸 US
 {{ getDownloadUrl('Quantumult_subscribe_hk.conf') }}, tag=🇭🇰 HK
 
+[server_local]
+
 [policy]
 available=🇺🇸 Auto US, {{ getQuantumultXNodeNames(nodeList, usFilter) }}
 available=🇭🇰 Auto HK, {{ getQuantumultXNodeNames(nodeList, hkFilter) }}
@@ -31,3 +33,7 @@ ip-cidr, 192.168.0.0/16, direct
 ip-cidr, 224.0.0.0/24, direct
 geoip, cn, direct
 final, proxy
+
+[rewrite_remote]
+[rewrite_local]
+[mitm]
