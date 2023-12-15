@@ -1,3 +1,13 @@
+## [3.0.1](https://github.com/geekdada/create-surgio-store/compare/v3.0.0...v3.0.1) (2023-12-15)
+
+
+### Bug Fixes
+
+* **template:** add quantumultx require fields ([1bdbec8](https://github.com/geekdada/create-surgio-store/commit/1bdbec8501a10ea28a64f1b21fb8d17348d5f662))
+* **template:** fix demo downloadUrl typo ([e307c09](https://github.com/geekdada/create-surgio-store/commit/e307c0917aed4c98e9fb333f0603f4e46d3ea38b))
+
+
+
 # [3.0.0](https://github.com/geekdada/create-surgio-store/compare/v2.0.7...v3.0.0) (2023-06-24)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "create-surgio-store",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Surgio store starter kit",
   "bin": {
     "create-surgio-store": "./index.js"
