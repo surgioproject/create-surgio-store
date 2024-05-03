@@ -1,6 +1,4 @@
-'use strict';
-
-const { utils } = require('surgio');
+const { utils, extendOutbounds } = require('surgio');
 
 /**
  * 使用文档：https://surgio.js.org/
@@ -103,6 +101,34 @@ module.exports = {
         magicVariable: utils.hkFilter,
       },
     },
+
+    /**
+     * sing-box
+     */
+    {
+      name: 'sing-box.json',
+      template: 'sing-box',
+      templateType: 'json',
+      extendTemplate: extendOutbounds(
+        ({ getSingboxNodes, getSingboxNodeNames, proxyTestUrl, nodeList }) => [
+          {
+            type: 'selector',
+            tag: 'proxy',
+            outbounds: ['auto', ...getSingboxNodeNames(nodeList)],
+            interrupt_exist_connections: false,
+          },
+          {
+            type: 'urltest',
+            tag: 'auto',
+            outbounds: getSingboxNodeNames(nodeList),
+            url: proxyTestUrl,
+            interrupt_exist_connections: false,
+          },
+          ...getSingboxNodes(nodeList),
+        ],
+      ),
+      provider: 'demo',
+     },
   ],
   /**
    * 订阅地址的前缀部分，以 / 结尾

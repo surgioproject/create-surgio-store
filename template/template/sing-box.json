@@ -48,20 +48,6 @@
   ],
   "outbounds": [
     {
-      "type": "selector",
-      "tag": "proxy",
-      "outbounds": {{ getSingboxNodeNames(nodeList, null, ['auto']) | json }},
-      "interrupt_exist_connections": false
-    },
-    {
-      "type": "urltest",
-      "tag": "auto",
-      "outbounds": {{ getSingboxNodeNames(nodeList) | json }},
-      "url": "{{ proxyTestUrl }}",
-      "interrupt_exist_connections": false
-    },
-    {{ getSingboxNodesString(nodeList) }},
-    {
       "type": "direct",
       "tag": "direct",
       "tcp_fast_open": true,
