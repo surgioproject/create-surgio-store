@@ -1,3 +1,13 @@
+# [3.1.0](https://github.com/geekdada/create-surgio-store/compare/v3.0.1...v3.1.0) (2024-05-03)
+
+
+### Features
+
+* add sing-box.json template for sing-box support ([9d4b5e6](https://github.com/geekdada/create-surgio-store/commit/9d4b5e6c28b8f218e228737ab2cf221ed08b79fe))
+* introduce sing-box support ([577113d](https://github.com/geekdada/create-surgio-store/commit/577113d559249be0c18e04b87439bf584d8d833c))
+
+
+
 ## [3.0.1](https://github.com/geekdada/create-surgio-store/compare/v3.0.0...v3.0.1) (2023-12-15)
 
 
