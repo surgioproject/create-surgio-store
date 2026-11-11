@@ -5,10 +5,10 @@ const commander = require('commander')
 const path = require('path')
 const fs = require('fs-extra')
 const os = require('os')
+const crypto = require('crypto')
 const spawn = require('cross-spawn')
 const inquirer = require('inquirer')
 const Handlebars = require('handlebars')
-const Promise = require('bluebird')
 
 const { join, resolve } = path
 const packageJson = require('./package.json')
@@ -70,50 +70,46 @@ async function createFn(name, verbose, useCnpm) {
     name: appName,
     version: '0.1.0',
     private: true,
+    type: 'module',
     scripts: {
       update: 'surgio generate',
-      start: 'node server.js',
-      lint: 'eslint . --ext .js',
+      start: 'node server.ts',
+      lint: 'eslint .',
+      typecheck: 'tsc --noEmit',
       format: 'prettier --write .',
     },
-    engine: {
-      node: '>=18.0.0',
+    engines: {
+      node: '>=22.22.2',
     },
   }
-  const allDependencies = ['surgio@^3']
-  const useAliyunOss = process.stdout.isTTY
-    ? await inquirer.prompt({
-        type: 'confirm',
-        name: 'useAliyunOss',
-        message: '是否配置将配置文件上传至阿里云 OSS？（默认：是）',
-        default: true,
-      })
-    : true
-  const useGateway = process.stdout.isTTY
-    ? await inquirer.prompt({
-        type: 'confirm',
-        name: 'useGateway',
-        message: '是否配置使用网关？（默认：是）',
-        default: true,
-      })
-    : true
-  const allowAnalytics = process.stdout.isTTY
-    ? await inquirer.prompt({
-        type: 'confirm',
-        name: 'allowAnalytics',
-        message: '是否允许我收集非常有限的报错信息用于排查问题？（默认：是）',
-        default: true,
-      })
-    : true
+  const allDependencies = ['surgio@^4']
+  const devDependencies = [
+    'typescript',
+    '@types/node',
+    'eslint',
+    '@surgio/eslint-config-surgio',
+    'prettier',
+  ]
+  const useObjectStorage = await confirm(
+    'useObjectStorage',
+    '是否配置将配置文件上传至对象存储（阿里云 OSS、Cloudflare R2 或其它 S3 服务）？（默认：是）'
+  )
+  const useGateway = await confirm('useGateway', '是否配置使用网关？（默认：是）')
+  const allowAnalytics = await confirm(
+    'allowAnalytics',
+    '是否允许我收集非常有限的报错信息用于排查问题？（默认：是）'
+  )
 
-  if (useAliyunOss) {
+  if (useObjectStorage) {
     packageJson.scripts.update = 'surgio generate && surgio upload'
   }
   if (allowAnalytics) {
-    console.log('若对信息收集感到不适，可以稍后在 surgio.conf.js 中关闭')
+    console.log('若对信息收集感到不适，可以稍后在 surgio.project.ts 中关闭')
   }
   if (useGateway) {
-    allDependencies.push('@surgio/gateway@^2')
+    allDependencies.push('@surgio/gateway@^3')
+  } else {
+    delete packageJson.scripts.start
   }
 
   // VSCode settings
@@ -131,7 +127,7 @@ async function createFn(name, verbose, useCnpm) {
       },
       null,
       2
-    ),
+    ) + os.EOL,
     {
       encoding: 'utf8',
     }
@@ -146,12 +142,15 @@ async function createFn(name, verbose, useCnpm) {
         },
         'editor.formatOnSave': true,
         '[javascript]': {
-          'editor.formatter': 'esbenp.prettier-vscode',
+          'editor.defaultFormatter': 'esbenp.prettier-vscode',
+        },
+        '[typescript]': {
+          'editor.defaultFormatter': 'esbenp.prettier-vscode',
         },
       },
       null,
       2
-    ),
+    ) + os.EOL,
     {
       encoding: 'utf8',
     }
@@ -180,7 +179,10 @@ async function createFn(name, verbose, useCnpm) {
 
   console.log('正在安装依赖，可能需要一点时间。安装过程中请不要关闭')
 
-  await install(root, allDependencies, verbose, useCnpm).catch((reason) => {
+  try {
+    await install(root, allDependencies, { verbose })
+    await install(root, devDependencies, { verbose, dev: true })
+  } catch (reason) {
     console.log()
     console.log('终止安装')
     if (reason.command) {
@@ -196,6 +198,8 @@ async function createFn(name, verbose, useCnpm) {
       'package.json',
       'package-lock.json',
       'node_modules',
+      '.vscode',
+      '.npmrc',
     ]
     const currentFiles = fs.readdirSync(join(root))
     currentFiles.forEach((file) => {
@@ -220,10 +224,10 @@ async function createFn(name, verbose, useCnpm) {
     }
     console.log('已完成')
     process.exit(1)
-  })
+  }
 
   await renderTemplates(root, {
-    useAliyunOss,
+    useObjectStorage,
     allowAnalytics,
     useGateway,
   })
@@ -235,7 +239,7 @@ async function createFn(name, verbose, useCnpm) {
   console.log('你可以在目录中执行命令：')
   console.log()
   console.log(`  ${chalk.cyan('npm run update')}`)
-  console.log(`    更新所有配置文件，上传至阿里云 OSS（如果已开启该功能）`)
+  console.log(`    更新所有配置文件，上传至对象存储（如果已开启该功能）`)
   console.log()
   console.log(`  ${chalk.cyan('npx surgio generate')}`)
   console.log(`    生成新的配置文件`)
@@ -251,6 +255,20 @@ async function createFn(name, verbose, useCnpm) {
   console.log(`使用文档: ${chalk.green('https://surgio.js.org/')}`)
   console.log(`交流群: ${chalk.green('https://t.me/surgiotg')}`)
   console.log()
+}
+
+// Non-interactive runs, such as CI, accept every default.
+async function confirm(name, message) {
+  if (!process.stdout.isTTY) {
+    return true
+  }
+  const answers = await inquirer.prompt({
+    type: 'confirm',
+    name,
+    message,
+    default: true,
+  })
+  return answers[name]
 }
 
 function isSafeToCreateProjectIn(root, name) {
@@ -371,15 +389,16 @@ function checkThatNpmCanReadCwd() {
   return false
 }
 
-function install(root, dependencies, verbose) {
+function install(root, dependencies, { verbose, dev = false }) {
   return new Promise((resolve, reject) => {
-    let command
-    let args
-
-    command = 'npm'
-    args = ['install', '--save', '--save-exact', '--loglevel', 'error'].concat(
-      dependencies
-    )
+    const command = 'npm'
+    const args = [
+      'install',
+      dev ? '--save-dev' : '--save',
+      '--save-exact',
+      '--loglevel',
+      'error',
+    ].concat(dependencies)
 
     if (verbose) {
       args.push('--verbose')
@@ -400,69 +419,56 @@ function install(root, dependencies, verbose) {
 
 async function renderTemplates(
   root,
-  { useAliyunOss, allowAnalytics, useGateway }
+  { useObjectStorage, allowAnalytics, useGateway }
 ) {
-  const confTpl = Handlebars.compile(
-    await fs.readFile(join(__dirname, 'template/surgio.conf.js.hbs'), {
-      encoding: 'utf8',
-    })
-  )
-  const gitignoreTpl = Handlebars.compile(
-    await fs.readFile(join(__dirname, 'template/gitignore.hbs'), {
-      encoding: 'utf8',
-    })
-  )
-  const eslintrcTpl = Handlebars.compile(
-    await fs.readFile(join(__dirname, 'template/eslintrc.js.hbs'), {
-      encoding: 'utf8',
-    })
-  )
-  const prettierrcTpl = Handlebars.compile(
-    await fs.readFile(join(__dirname, 'template/prettierrc.js.hbs'), {
-      encoding: 'utf8',
-    })
-  )
-  const serverTpl = Handlebars.compile(
-    await fs.readFile(join(__dirname, 'template/server.js.hbs'), {
-      encoding: 'utf8',
-    })
-  )
-
-  const paths = {
-    conf: join(root, 'surgio.conf.js'),
-    gitignore: join(root, '.gitignore'),
-    eslintrc: join(root, '.eslintrc.js'),
-    prettierrc: join(root, '.prettierrc.js'),
-    server: join(root, 'server.js'),
-  }
-
-  await fs.writeFile(
-    paths.conf,
-    confTpl({
-      useAliyunOss,
-      allowAnalytics,
-      useGateway,
-    }) + os.EOL
-  )
-  await fs.writeFile(paths.gitignore, gitignoreTpl({}) + os.EOL)
-  await fs.writeFile(paths.eslintrc, eslintrcTpl({}) + os.EOL)
-  await fs.writeFile(paths.prettierrc, prettierrcTpl({}) + os.EOL)
+  const files = [
+    { template: 'surgio.project.ts.hbs', target: 'surgio.project.ts' },
+    { template: 'tsconfig.json.hbs', target: 'tsconfig.json' },
+    { template: 'gitignore.hbs', target: '.gitignore' },
+    { template: 'eslint.config.mjs.hbs', target: 'eslint.config.mjs' },
+    { template: 'prettierrc.json.hbs', target: '.prettierrc.json' },
+  ]
   if (useGateway) {
-    await fs.writeFile(paths.server, serverTpl({}) + os.EOL)
+    files.push({ template: 'server.ts.hbs', target: 'server.ts' })
   }
 
-  console.log(`配置已生成至 ${chalk.green(paths.conf)}，请将配置补全`)
-  if (useAliyunOss) {
-    console.log('阿里云 OSS 配置可以在管理面板中找到')
+  const context = {
+    useObjectStorage,
+    allowAnalytics,
+    useGateway,
+    accessToken: generateToken(),
+    viewerToken: generateToken(),
+  }
+
+  for (const file of files) {
+    const source = await fs.readFile(join(__dirname, 'template', file.template), {
+      encoding: 'utf8',
+    })
+    await fs.writeFile(
+      join(root, file.target),
+      Handlebars.compile(source, { noEscape: true })(context)
+    )
+  }
+
+  console.log(
+    `配置已生成至 ${chalk.green(join(root, 'surgio.project.ts'))}，请将配置补全`
+  )
+  if (useGateway) {
+    console.log('网关的 accessToken 和 viewerToken 已随机生成，请妥善保管')
+  }
+  if (useObjectStorage) {
+    console.log(
+      '上传凭证请通过环境变量 S3_BACKEND_ACCESS_KEY_ID 和 S3_BACKEND_ACCESS_KEY_SECRET 提供'
+    )
   }
   console.log()
 }
 
-async function copyFolders(root) {
-  const folders = ['provider', 'template']
+// Tokens guard the gateway admin API, so they must not be guessable.
+function generateToken() {
+  return crypto.randomBytes(24).toString('base64url')
+}
 
-  await Promise.each(folders, async (item) => {
-    const source = join(__dirname, `template/${item}`)
-    await fs.copy(source, join(root, item))
-  })
+async function copyFolders(root) {
+  await fs.copy(join(__dirname, 'template/template'), join(root, 'template'))
 }

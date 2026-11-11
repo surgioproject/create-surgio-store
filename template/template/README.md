@@ -2,7 +2,7 @@
 
 ## 自定义模板
 
-- [文档](https://surgio.js.org/guide/custom-template.html)
+- [文档](https://surgio.js.org/guide/custom-template)
 
 ## 更新
 

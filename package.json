@@ -30,9 +30,8 @@
   "bugs": {
     "url": "https://github.com/geekdada/create-surgio-store/issues"
   },
-  "homepage": "https://surgio.royli.dev",
+  "homepage": "https://surgio.js.org",
   "devDependencies": {
-    "@types/bluebird": "^3.5.36",
     "@types/fs-extra": "^9.0.13",
     "ava": "^4.0.1",
     "bumpp": "^9.1.1",
@@ -42,10 +41,9 @@
     "prettier": "^2.6.2"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.22.2"
   },
   "dependencies": {
-    "bluebird": "^3.7.2",
     "chalk": "^4.1.0",
     "commander": "^5.1.0",
     "cross-spawn": "^7.0.3",
