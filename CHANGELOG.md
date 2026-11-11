@@ -1,3 +1,17 @@
+# [4.0.0](https://github.com/geekdada/create-surgio-store/compare/v3.1.0...v4.0.0) (2026-11-11)
+
+
+* feat!: generate surgio v4 projects ([c4c6890](https://github.com/geekdada/create-surgio-store/commit/c4c6890680d70a749347db86bc8952b0a5ff2c43))
+
+
+### BREAKING CHANGES
+
+* generated projects require Node.js 22.22.2 or newer and
+use Surgio v4. The starter no longer creates surgio.conf.js or the
+provider directory.
+
+
+
 # [3.1.0](https://github.com/geekdada/create-surgio-store/compare/v3.0.1...v3.1.0) (2024-05-03)
 
 
